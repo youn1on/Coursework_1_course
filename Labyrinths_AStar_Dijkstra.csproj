@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="Controller\Form1.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Controller\Randomizer.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Controller\RandomizeForm.resx">
+        <DependentUpon>Randomizer.cs</DependentUpon>
+      </EmbeddedResource>
+    </ItemGroup>
+
+</Project>
