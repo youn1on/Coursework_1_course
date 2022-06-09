@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using Labyrinths_AStar_Dijkstra.Controller;
 using Labyrinths_AStar_Dijkstra.Model;
+using Labyrinths_AStar_Dijkstra.View;
 
 namespace Labyrinths_AStar_Dijkstra
 {
@@ -31,7 +32,7 @@ namespace Labyrinths_AStar_Dijkstra
             {
                 labyrinth = FileContentProcessor.GetLabyrinthMatrix(FileContent);
             }
-            
+            Application.Run(new DisplayResult());
         }
     }
 }

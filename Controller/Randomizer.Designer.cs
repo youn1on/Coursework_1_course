@@ -112,19 +112,13 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.label2.TabIndex = 5;
             this.label2.Text = "x";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
-            // box
-            //
-            this.box.Location = Style.LabyrinthLocation;
-            this.box.Size = Style.VisualizedLabyrinthSize;
-            this.box.Name = "labyrinth";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(752, 843);
+            this.ClientSize = new System.Drawing.Size(752, 780);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.checkBox1);

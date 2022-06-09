@@ -10,25 +10,32 @@ namespace Labyrinths_AStar_Dijkstra.View
     public class LabyrinthVisualiser
     {
         private int[][] labyrinth;
-        public int CellSize;
-        public LabyrinthVisualiser(int[][] labyrinth, Randomizer form)
-           {
-               CellSize = labyrinth.Length > labyrinth[0].Length
-                   ? Style.VisualizedLabyrinthSize.Height / labyrinth.Length
-                   : Style.VisualizedLabyrinthSize.Width / labyrinth[0].Length;
-               this.labyrinth = labyrinth;
-               form.background = new Label();
-               form.background.BackColor = Color.Black;
-               form.background.Size = new Size(CellSize * labyrinth[0].Length, CellSize * labyrinth.Length);
-               form.background.Location = new Point(Style.LabyrinthLocation.X+(Style.VisualizedLabyrinthSize.Width-form.background.Size.Width)/2,
-                   Style.LabyrinthLocation.Y+(Style.VisualizedLabyrinthSize.Height-form.background.Size.Height)/2);
-               form.background.Paint += new PaintEventHandler(Draw);
-               form.Controls.Add(form.background);
-           }
+        private Point _start, _finish;
+        private readonly int _cellSize;
+        private PaintEventArgs paintEventArgs;
+
+        public LabyrinthVisualiser(int[][] labyrinth, Randomizer form, Point start = default, Point finish = default)
+        {
+            _start = start;
+            _finish = finish;
+            _cellSize = labyrinth.Length > labyrinth[0].Length
+                ? Style.VisualizedLabyrinthSize.Height / labyrinth.Length
+                : Style.VisualizedLabyrinthSize.Width / labyrinth[0].Length;
+            this.labyrinth = labyrinth;
+            form.background = new Label();
+            form.background.BackColor = Color.Black;
+            form.background.Size = new Size(_cellSize * labyrinth[0].Length, _cellSize * labyrinth.Length);
+            form.background.Location = new Point(
+                Style.LabyrinthLocation.X + (Style.VisualizedLabyrinthSize.Width - form.background.Size.Width) / 2,
+                Style.LabyrinthLocation.Y + (Style.VisualizedLabyrinthSize.Height - form.background.Size.Height) / 2);
+            form.background.Paint += new PaintEventHandler(Draw);
+            form.Controls.Add(form.background);
+        }
 
         public void Draw(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.White, CellSize);
+            paintEventArgs = e;
+            Pen pen = new Pen(Color.White, _cellSize);
             Vertice[] vertices = LabyrinthProcessor.GetVerticeList(labyrinth, new[] {new[] {0, 0}, new[] {0, 0}});
             int[][] distances = LabyrinthProcessor.GetDistances(vertices, labyrinth);
 
@@ -38,18 +45,18 @@ namespace Labyrinths_AStar_Dijkstra.View
                 {
                     if (distances[i][j] < Int32.MaxValue / 2)
                     {
-                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * CellSize + CellSize / 2,
-                            vertices[i].X * CellSize + CellSize / 2,
-                            vertices[j].Y * CellSize + CellSize / 2, vertices[j].X * CellSize + CellSize / 2);
+                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize + _cellSize / 2,
+                            vertices[i].X * _cellSize + _cellSize / 2,
+                            vertices[j].Y * _cellSize + _cellSize / 2, vertices[j].X * _cellSize + _cellSize / 2);
                         if (x1 == x2)
                         {
-                            y1 -= CellSize / 2;
-                            y2 += CellSize / 2;
+                            y1 -= _cellSize / 2;
+                            y2 += _cellSize / 2;
                         }
                         else
                         {
-                            x1 -= CellSize / 2;
-                            x2 += CellSize / 2;
+                            x1 -= _cellSize / 2;
+                            x2 += _cellSize / 2;
                         }
 
                         e.Graphics.DrawLine(pen, x1, y1, x2, y2);
@@ -60,8 +67,52 @@ namespace Labyrinths_AStar_Dijkstra.View
             foreach (Vertice vertice in vertices)
             {
                 pen.Color = Color.LightBlue;
-                e.Graphics.DrawLine(pen, vertice.Y*CellSize+CellSize/2, vertice.X*CellSize, vertice.Y*CellSize+CellSize/2, vertice.X*CellSize+CellSize);
+                e.Graphics.DrawLine(pen, vertice.Y*_cellSize+_cellSize/2, vertice.X*_cellSize, vertice.Y*_cellSize+_cellSize/2, vertice.X*_cellSize+_cellSize);
             }
+
+            if (_start != default)
+            {
+                pen.Color = Color.Crimson;
+                e.Graphics.DrawLine(pen, _start.Y*_cellSize+_cellSize/2, _start.X*_cellSize, _start.Y*_cellSize+_cellSize/2, _start.X*_cellSize+_cellSize);
+                e.Graphics.DrawLine(pen, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize+_cellSize);
+            }
+        }
+        
+        public void DrawPathBetween(Vertice vertice1, Vertice vertice2, Color pathColor = default)
+        {
+            if (paintEventArgs == null) return;
+            Pen pen = new Pen(pathColor==default?Color.CornflowerBlue:pathColor, _cellSize);
+            (int x1, int y1, int x2, int y2) = (vertice1.Y*_cellSize, vertice1.X*_cellSize, vertice2.Y*_cellSize, vertice2.X*_cellSize);
+            if (x1 == x2)
+            {
+                x1 += _cellSize / 2;
+                x2 += _cellSize / 2;
+                if (y1 > y2) y2 += _cellSize;
+                else y1 += _cellSize;
+            }
+            else
+            {
+                y1 += _cellSize / 2;
+                y2 += _cellSize / 2;
+                if (x1 > x2) x2 += _cellSize;
+                else x1 += _cellSize;
+            }
+            paintEventArgs.Graphics.DrawLine(pen, x1, y1, x2, y2);
+            pen.Color = pathColor==default?Color.RoyalBlue:pathColor;
+            paintEventArgs.Graphics.DrawLine(pen, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize+_cellSize);
+        }
+
+        public void DrawRoute(Vertice[] vertices, int finIndex)
+        {
+            Vertice current = vertices[finIndex];
+            DrawPathBetween(current, current, Color.Blue);
+            while (current.Previous != -1)
+            {
+                Vertice previous = vertices[current.Previous];
+                DrawPathBetween(current, previous, Color.Blue);
+                current = previous;
+            }
+            DrawPathBetween(current, current, Color.Red);
         }
     }
 }
