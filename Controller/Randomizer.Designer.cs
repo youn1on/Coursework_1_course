@@ -40,18 +40,31 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.box = new GroupBox();
+            this.button2 = new Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.button1.Location = new System.Drawing.Point(273, 162);
+            this.button1.Location = Style.RandomizeLocation;
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(205, 67);
             this.button1.TabIndex = 0;
             this.button1.Text = "Randomize";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Randomize);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.button2.Location = Style.ConfirmButtonPoint;
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(205, 67);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Confirm✓";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Confirm);
+            this.button2.BackColor = Style.ConfirmButtonColor;
             // 
             // label1
             // 
@@ -118,6 +131,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -137,6 +151,8 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Button button1;
+        
+        private System.Windows.Forms.Button button2;
 
         #endregion
     }

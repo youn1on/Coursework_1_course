@@ -14,7 +14,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         
         private void Confirm(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.textBox1.Text.Trim())) MessageBox.Show($"The program don`t accept empty path!");
+            if (string.IsNullOrEmpty(this.textBox1.Text.Trim())) MessageBox.Show($"The program doesn`t accept empty path!");
             else if (File.Exists(this.textBox1.Text))
             {
                 string[] content = FileOperations.GetFileContent(this.textBox1.Text);
@@ -52,11 +52,16 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         {
             NextForm();
         }
+       private void Display(object sender, EventArgs e)
+       {
+           NextForm();
+       }
 
         private void NextForm()
         {
             Program.ClosedByUser = false;
             Close();
         }
+        
     }
 }

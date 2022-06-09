@@ -24,8 +24,8 @@ namespace Labyrinths_AStar_Dijkstra.Model
         {
             int[][] labyrinth = GetEmptyLabyrinth(sizeX, sizeY);
             Random rand = new Random();
-            Structures.Stack<System.Collections.Generic.KeyValuePair<int, int>> stack =
-                new Structures.Stack<System.Collections.Generic.KeyValuePair<int, int>>();
+            Stack<System.Collections.Generic.KeyValuePair<int, int>> stack =
+                new Stack<System.Collections.Generic.KeyValuePair<int, int>>();
             int i = rand.Next((labyrinth.Length - 1) / 2) * 2 + 1;
             int j = rand.Next((labyrinth[0].Length - 1) / 2) * 2 + 1;
             labyrinth[i][j] = 0;
@@ -83,22 +83,6 @@ namespace Labyrinths_AStar_Dijkstra.Model
             if (neighbours.Count == 0) return new(-1, -1);
             Random rand = new Random();
             return neighbours[rand.Next(neighbours.Count)];
-        }
-
-
-        public static string[] ToStringArray(int[][] labyrinth)
-        {
-            string[] stringLabyrinth = new string[labyrinth.Length];
-            for (int i = 0; i < labyrinth.Length; i++)
-            {
-                stringLabyrinth[i] = "";
-                for (int j = 0; j < labyrinth[0].Length; j++)
-                {
-                    stringLabyrinth[i] += labyrinth[i][j] == 1 ? "X " : "  ";
-                }
-            }
-
-            return stringLabyrinth;
         }
     }
 }

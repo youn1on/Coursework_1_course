@@ -16,6 +16,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             InitializeComponent();
         }
 
+        public Label background;
         private async void Randomize(object sender, EventArgs e)
         {
             string pattern = @"^[3-9]$|^\d\d$";
@@ -25,31 +26,23 @@ namespace Labyrinths_AStar_Dijkstra.Controller
                 return;
             }
 
-            if (this.labyrinthVisualiser != null) RemoveLabyrinth();
+            if (this.labyrinthVisualiser != null) Controls.Remove(background);
             int sizeX = Int32.Parse(textBox2.Text) * 2 + 1;
             int sizeY = Int32.Parse(textBox1.Text) * 2 + 1;
             Program.labyrinth = checkBox1.Checked
                 ? LabyrinthGenerator.GenerateDeadEndLabyrinth(sizeX, sizeY)
                 : LabyrinthGenerator.GenerateLabyrinth(sizeX, sizeY);
-            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth);
-            foreach (var label in labyrinthVisualiser.GetCellsArray())
-            {
-                this.box.Controls.Add(label);
-            }
-
-            box.Size = new Size(labyrinthVisualiser.Cells.Length * labyrinthVisualiser.CellSize,
-                labyrinthVisualiser.Cells[0].Length * labyrinthVisualiser.CellSize);
-            this.Controls.Add(box);
+            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);
             Refresh();
         }
-
-        private void RemoveLabyrinth()
+        private void Confirm(object sender, EventArgs e)
         {
-            /*Label[] cells = this.labyrinthVisualiser.GetCellsArray();
-            foreach (var label in cells) Controls.Remove(label);*/
-            
-            this.Controls.Remove(box);
-            box.Controls.Clear();
+            if (Program.labyrinth == null) MessageBox.Show("Please randomize labyrinth first");
+            else
+            {
+                Program.ClosedByUser = false;
+                Close();
+            }
         }
     }
 }

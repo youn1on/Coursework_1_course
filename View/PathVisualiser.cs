@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Labyrinths_AStar_Dijkstra.Model;
 using Labyrinths_AStar_Dijkstra.Model.Structures;
 
