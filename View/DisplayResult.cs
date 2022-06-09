@@ -14,26 +14,42 @@ namespace Labyrinths_AStar_Dijkstra.View
         }
 
         public Label background;
-
-        private async void Randomize(object sender, EventArgs e)
+        private int startX, startY, endX, endY;
+        private bool IsValid = false;
+        private async void Check(object sender, EventArgs e)
         {
-            string pattern = @"^[3-9]$|^\d\d$";
-            if (!Regex.IsMatch(textBox1.Text, pattern) || !Regex.IsMatch(textBox2.Text, pattern))
+            if (!int.TryParse(this.coordinatesStartX.Text, out startX) || !int.TryParse(this.coordinatesStartY.Text, out startY) ||
+                !int.TryParse(this.coordinatesEndX.Text, out endX) || !int.TryParse(this.coordinatesEndY.Text, out endY))
             {
-                MessageBox.Show("Incorrect dimensions. Enter dimensions in range 3-99.");
+                MessageBox.Show("Incorrect input! Please, enter numerical coordinates!");
+            }
+            else if (startX < 0 || endX < 0 || startY < 0 || endY < 0 || startX > Program.labyrinth[0].Length ||
+                endX>Program.labyrinth[0].Length||startY>Program.labyrinth.Length||endY>Program.labyrinth.Length)
+            {
+                MessageBox.Show("At least one of coordinates is out of labyrinth range!");
+            }
+            else if (Program.labyrinth[startY][startX] == 1 || Program.labyrinth[endY][endX] == 1)
+            {
+                MessageBox.Show("You have chosen the wall! Please, enter the coordinates of free space!");
+            }
+            else
+            {
+                IsValid = true;
+                this.labyrinthVisualiser =
+                    new LabyrinthVisualiser(Program.labyrinth, this, new(startX, startY), new(endX, endY));
                 return;
             }
-
-            if (this.labyrinthVisualiser != null) Controls.Remove(background);
-            int sizeX = Int32.Parse(textBox2.Text) * 2 + 1;
-            int sizeY = Int32.Parse(textBox1.Text) * 2 + 1;
-            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);
-            Refresh();
+            IsValid = false;
         }
-
         private void Confirm(object sender, EventArgs e)
         {
-            
+            if (!IsValid) Check(sender, e);
+            if (!IsValid)
+            {
+                MessageBox.Show("Please, enter valid coordinates!");
+                return;
+            }
+    
         }
     }
 }

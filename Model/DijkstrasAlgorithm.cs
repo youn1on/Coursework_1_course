@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Labyrinths_AStar_Dijkstra.Model.Structures;
+using Labyrinths_AStar_Dijkstra.View;
 
 namespace Labyrinths_AStar_Dijkstra.Model
 {
@@ -9,11 +10,12 @@ namespace Labyrinths_AStar_Dijkstra.Model
     {
         protected readonly Vertice[] Vertices;
         protected readonly int[][] DistanceMatrix;
-
-        public DijkstrasAlgorithm(Vertice[] vertices, int[][] distanceMatrix)
+        protected LabyrinthVisualiser Visualiser;
+        public DijkstrasAlgorithm(Vertice[] vertices, int[][] distanceMatrix, LabyrinthVisualiser visualiser)
         {
             Vertices = vertices;
             DistanceMatrix = distanceMatrix;
+            Visualiser = visualiser;
         }
         public bool FindRoute(int startPointIndex, int endPointIndex)
         {
@@ -43,8 +45,8 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 }
 
                 Vertices[currentVertice].Passed = true;
+                Visualiser.DrawPathBetween(Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]);
             }
-
             return false;
         }
 

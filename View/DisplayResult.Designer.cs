@@ -1,4 +1,6 @@
-﻿namespace Labyrinths_AStar_Dijkstra.View
+﻿using System.Drawing;
+
+namespace Labyrinths_AStar_Dijkstra.View
 {
     partial class DisplayResult
     {
@@ -29,155 +31,156 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.dijkstraRadioButton = new System.Windows.Forms.RadioButton();
+            this.manhattanRadioButton = new System.Windows.Forms.RadioButton();
+            this.euclideanRadioButton = new System.Windows.Forms.RadioButton();
+            this.check = new System.Windows.Forms.Button();
+            this.confirm = new System.Windows.Forms.Button();
+            this.title = new System.Windows.Forms.Label();
+            this.coordinatesStartX = new System.Windows.Forms.TextBox();
+            this.startpointLabel = new System.Windows.Forms.Label();
+            this.xLabel = new System.Windows.Forms.Label();
+            this.yLabel = new System.Windows.Forms.Label();
+            this.coordinatesStartY = new System.Windows.Forms.TextBox();
+            this.coordinatesEndY = new System.Windows.Forms.TextBox();
+            this.yEndLabel = new System.Windows.Forms.Label();
+            this.xEndLabel = new System.Windows.Forms.Label();
+            this.endpointLabel = new System.Windows.Forms.Label();
+            this.coordinatesEndX = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // dijkstraRadioButton
             // 
-            this.radioButton1.Location = new System.Drawing.Point(57, 181);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(119, 18);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Dijkstra";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.dijkstraRadioButton.Location = new System.Drawing.Point(57, 180);
+            this.dijkstraRadioButton.Name = "dijkstraRadioButton";
+            this.dijkstraRadioButton.Size = new System.Drawing.Size(140, 25);
+            this.dijkstraRadioButton.TabIndex = 0;
+            this.dijkstraRadioButton.TabStop = true;
+            this.dijkstraRadioButton.Text = "Dijkstra";
+            this.dijkstraRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // manhattanRadioButton
             // 
-            this.radioButton2.Location = new System.Drawing.Point(198, 179);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(128, 22);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "A* Manhattan";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.manhattanRadioButton.Location = new System.Drawing.Point(198, 180);
+            this.manhattanRadioButton.Name = "manhattanRadioButton";
+            this.manhattanRadioButton.Size = new System.Drawing.Size(140, 25);
+            this.manhattanRadioButton.TabIndex = 1;
+            this.manhattanRadioButton.TabStop = true;
+            this.manhattanRadioButton.Text = "A* Manhattan";
+            this.manhattanRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // euclideanRadioButton
             // 
-            this.radioButton3.Location = new System.Drawing.Point(358, 177);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(143, 24);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "A* Euclidean";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.euclideanRadioButton.Location = new System.Drawing.Point(358, 180);
+            this.euclideanRadioButton.Name = "euclideanRadioButton";
+            this.euclideanRadioButton.Size = new System.Drawing.Size(140, 25);
+            this.euclideanRadioButton.TabIndex = 2;
+            this.euclideanRadioButton.TabStop = true;
+            this.euclideanRadioButton.Text = "A* Euclidean";
+            this.euclideanRadioButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // check
             // 
-            this.button1.Location = new System.Drawing.Point(48, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 47);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Check";
-            this.button1.UseVisualStyleBackColor = true;
+            this.check.Location = new System.Drawing.Point(48, 120);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(191, 47);
+            this.check.TabIndex = 3;
+            this.check.Text = "Check";
+            this.check.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // confirm
             // 
-            this.button2.Location = new System.Drawing.Point(307, 116);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 45);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Confirm✓";
-            this.button2.UseVisualStyleBackColor = true;
+            this.confirm.Location = new System.Drawing.Point(307, 120);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(194, 45);
+            this.confirm.TabIndex = 4;
+            this.confirm.Text = "Confirm✓";
+            this.confirm.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // Title
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(383, 22);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Enter coordinates of startpoint and endpoint separated by \",\"";
+            this.title.Location = new System.Drawing.Point(250, 12);
+            this.title.Name = "title";
+            this.title.TextAlign = ContentAlignment.MiddleCenter;
+            this.title.Size = new System.Drawing.Size(320, 22);
+            this.title.TabIndex = 5;
+            this.title.Text = "Enter coordinates of startpoint and endpoint";
             // 
-            // textBox2
+            // coordinatesStartX
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(30, 22);
-            this.textBox2.TabIndex = 6;
+            this.coordinatesStartX.Location = new System.Drawing.Point(237, 66);
+            this.coordinatesStartX.Name = "coordinatesStartX";
+            this.coordinatesStartX.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesStartX.TabIndex = 6;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(70, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 35);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Startpoint";
+            this.startpointLabel.Location = new System.Drawing.Point(115, 66);
+            this.startpointLabel.Name = "startpointLabel";
+            this.startpointLabel.Size = new System.Drawing.Size(80, 35);
+            this.startpointLabel.TabIndex = 8;
+            this.startpointLabel.Text = "Startpoint";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(137, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "x";
+            this.xLabel.Location = new System.Drawing.Point(215, 66);
+            this.xLabel.Name = "xLabel";
+            this.xLabel.Size = new System.Drawing.Size(15, 17);
+            this.xLabel.TabIndex = 10;
+            this.xLabel.Text = "x";
             // 
-            // label4
+            // yLabel
             // 
-            this.label4.Location = new System.Drawing.Point(198, 66);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "y";
+            this.yLabel.Location = new System.Drawing.Point(276, 66);
+            this.yLabel.Name = "yLabel";
+            this.yLabel.Size = new System.Drawing.Size(15, 17);
+            this.yLabel.TabIndex = 11;
+            this.yLabel.Text = "y";
             // 
-            // textBox4
+            // coordinatesStartY
             // 
-            this.textBox4.Location = new System.Drawing.Point(219, 66);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(30, 22);
-            this.textBox4.TabIndex = 12;
+            this.coordinatesStartY.Location = new System.Drawing.Point(300, 66);
+            this.coordinatesStartY.Name = "coordinatesStartY";
+            this.coordinatesStartY.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesStartY.TabIndex = 12;
             // 
-            // textBox5
+            // coordinatesEndY
             // 
-            this.textBox5.Location = new System.Drawing.Point(455, 69);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(30, 22);
-            this.textBox5.TabIndex = 17;
+            this.coordinatesEndY.Location = new System.Drawing.Point(455, 69);
+            this.coordinatesEndY.Name = "coordinatesEndY";
+            this.coordinatesEndY.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesEndY.TabIndex = 17;
             // 
-            // label5
+            // yEndLabel
             // 
-            this.label5.Location = new System.Drawing.Point(434, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 17);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "y";
+            this.yEndLabel.Location = new System.Drawing.Point(434, 69);
+            this.yEndLabel.Name = "yEndLabel";
+            this.yEndLabel.Size = new System.Drawing.Size(15, 17);
+            this.yEndLabel.TabIndex = 16;
+            this.yEndLabel.Text = "y";
             // 
-            // label6
+            // xEndLabel
             // 
-            this.label6.Location = new System.Drawing.Point(373, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 17);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "x";
+            this.xEndLabel.Location = new System.Drawing.Point(373, 69);
+            this.xEndLabel.Name = "xEndLabel";
+            this.xEndLabel.Size = new System.Drawing.Size(15, 17);
+            this.xEndLabel.TabIndex = 15;
+            this.xEndLabel.Text = "x";
             // 
-            // label7
+            // endpointLabel
             // 
-            this.label7.Location = new System.Drawing.Point(306, 69);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 35);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Endpoint";
+            this.endpointLabel.Location = new System.Drawing.Point(306, 69);
+            this.endpointLabel.Name = "endpointLabel";
+            this.endpointLabel.Size = new System.Drawing.Size(82, 35);
+            this.endpointLabel.TabIndex = 14;
+            this.endpointLabel.Text = "Endpoint";
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(394, 69);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(30, 22);
-            this.textBox6.TabIndex = 13;
+            this.coordinatesEndX.Location = new System.Drawing.Point(394, 69);
+            this.coordinatesEndX.Name = "coordinatesEndX";
+            this.coordinatesEndX.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesEndX.TabIndex = 13;
             // 
             // Form1
             // 
@@ -185,22 +188,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 519);
             this.Controls.Clear();
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.coordinatesEndY);
+            this.Controls.Add(this.yEndLabel);
+            this.Controls.Add(this.xEndLabel);
+            this.Controls.Add(this.endpointLabel);
+            this.Controls.Add(this.coordinatesEndX);
+            this.Controls.Add(this.coordinatesStartY);
+            this.Controls.Add(this.yLabel);
+            this.Controls.Add(this.xLabel);
+            this.Controls.Add(this.startpointLabel);
+            this.Controls.Add(this.coordinatesStartX);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.confirm);
+            this.Controls.Add(this.check);
+            this.Controls.Add(this.euclideanRadioButton);
+            this.Controls.Add(this.manhattanRadioButton);
+            this.Controls.Add(this.dijkstraRadioButton);
             this.Name = "DisplayResultForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -208,22 +211,22 @@
         }
 
         private LabyrinthVisualiser labyrinthVisualiser;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label xLabel;
+        private System.Windows.Forms.Label yLabel;
+        private System.Windows.Forms.TextBox coordinatesStartY;
+        private System.Windows.Forms.TextBox coordinatesEndY;
+        private System.Windows.Forms.Label yEndLabel;
+        private System.Windows.Forms.Label xEndLabel;
+        private System.Windows.Forms.Label endpointLabel;
+        private System.Windows.Forms.TextBox coordinatesEndX;
+        private System.Windows.Forms.Label startpointLabel;
+        private System.Windows.Forms.TextBox coordinatesStartX;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Button confirm;
+        private System.Windows.Forms.Button check;
+        private System.Windows.Forms.RadioButton euclideanRadioButton;
+        private System.Windows.Forms.RadioButton dijkstraRadioButton;
+        private System.Windows.Forms.RadioButton manhattanRadioButton;
 
         #endregion
     }
