@@ -97,10 +97,10 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.confirm.Size = new System.Drawing.Size(194, 45);
             this.confirm.TabIndex = 4;
             this.confirm.Text = "Confirm✓";
+            this.confirm.BackColor = Style.ConfirmButtonColor;
             this.confirm.Click += new(this.Confirm);
-            this.confirm.UseVisualStyleBackColor = true;
             // 
-            // Title
+            // title
             // 
             this.title.Location = new System.Drawing.Point(250, 12);
             this.title.Name = "title";
@@ -116,7 +116,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.coordinatesStartX.Size = new System.Drawing.Size(30, 22);
             this.coordinatesStartX.TabIndex = 6;
             // 
-            // label1
+            // startpointLabel
             // 
             this.startpointLabel.Location = new System.Drawing.Point(115, 66);
             this.startpointLabel.Name = "startpointLabel";
@@ -124,7 +124,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.startpointLabel.TabIndex = 8;
             this.startpointLabel.Text = "Startpoint";
             // 
-            // label3
+            // xLabel
             // 
             this.xLabel.Location = new System.Drawing.Point(215, 66);
             this.xLabel.Name = "xLabel";
@@ -149,14 +149,14 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // coordinatesEndY
             // 
-            this.coordinatesEndY.Location = new System.Drawing.Point(455, 69);
+            this.coordinatesEndY.Location = new System.Drawing.Point(570, 66);
             this.coordinatesEndY.Name = "coordinatesEndY";
             this.coordinatesEndY.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndY.TabIndex = 17;
             // 
             // yEndLabel
             // 
-            this.yEndLabel.Location = new System.Drawing.Point(434, 69);
+            this.yEndLabel.Location = new System.Drawing.Point(535, 66);
             this.yEndLabel.Name = "yEndLabel";
             this.yEndLabel.Size = new System.Drawing.Size(15, 17);
             this.yEndLabel.TabIndex = 16;
@@ -164,7 +164,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // xEndLabel
             // 
-            this.xEndLabel.Location = new System.Drawing.Point(373, 69);
+            this.xEndLabel.Location = new System.Drawing.Point(512, 66);
             this.xEndLabel.Name = "xEndLabel";
             this.xEndLabel.Size = new System.Drawing.Size(15, 17);
             this.xEndLabel.TabIndex = 15;
@@ -172,15 +172,15 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // endpointLabel
             // 
-            this.endpointLabel.Location = new System.Drawing.Point(306, 69);
+            this.endpointLabel.Location = new System.Drawing.Point(430, 66);
             this.endpointLabel.Name = "endpointLabel";
             this.endpointLabel.Size = new System.Drawing.Size(82, 35);
             this.endpointLabel.TabIndex = 14;
             this.endpointLabel.Text = "Endpoint";
             // 
-            // textBox6
+            // coordinatesEndX
             // 
-            this.coordinatesEndX.Location = new System.Drawing.Point(394, 69);
+            this.coordinatesEndX.Location = new System.Drawing.Point(535, 66);
             this.coordinatesEndX.Name = "coordinatesEndX";
             this.coordinatesEndX.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndX.TabIndex = 13;
@@ -189,7 +189,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.ClientSize = new System.Drawing.Size(752, 780);
             this.Controls.Clear();
             this.Controls.Add(this.coordinatesEndY);
             this.Controls.Add(this.yEndLabel);

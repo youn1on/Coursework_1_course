@@ -17,16 +17,16 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         private async void Randomize(object sender, EventArgs e)
         {
             string pattern = @"^[3-9]$|^\d\d$";
-            if (!Regex.IsMatch(textBox1.Text, pattern) || !Regex.IsMatch(textBox2.Text, pattern))
+            if (!Regex.IsMatch(xDimension.Text, pattern) || !Regex.IsMatch(yDimension.Text, pattern))
             {
                 MessageBox.Show("Incorrect dimensions. Enter dimensions in range 3-99.");
                 return;
             }
 
             if (this.labyrinthVisualiser != null) Controls.Remove(background);
-            int sizeX = Int32.Parse(textBox2.Text) * 2 + 1;
-            int sizeY = Int32.Parse(textBox1.Text) * 2 + 1;
-            Program.labyrinth = checkBox1.Checked
+            int sizeX = Int32.Parse(yDimension.Text) * 2 + 1;
+            int sizeY = Int32.Parse(xDimension.Text) * 2 + 1;
+            Program.labyrinth = deadEndCheckBox.Checked
                 ? LabyrinthGenerator.GenerateDeadEndLabyrinth(sizeX, sizeY)
                 : LabyrinthGenerator.GenerateLabyrinth(sizeX, sizeY);
             this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);

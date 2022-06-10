@@ -37,7 +37,7 @@ namespace Labyrinths_AStar_Dijkstra.View
                 this.Controls.Remove(this.background);
                 IsValid = true;
                 this.labyrinthVisualiser =
-                    new LabyrinthVisualiser(Program.labyrinth, this, new(startX, startY), new(endX, endY));
+                    new LabyrinthVisualiser(Program.labyrinth, this, new(startY, startX), new(endY, endX));
                 return;
             }
             IsValid = false;
@@ -52,13 +52,13 @@ namespace Labyrinths_AStar_Dijkstra.View
             }
 
             vertices = LabyrinthProcessor.GetVerticeList(Program.labyrinth,
-                new[] {new[] {startX, startY}, new[] {endX, endY}});
+                new[] {new[] {startY, startX}, new[] {endY, endX}});
             int[][] distances = LabyrinthProcessor.GetDistances(vertices, Program.labyrinth);
             if (dijkstraRadioButton.Checked) algo = new DijkstrasAlgorithm(vertices, distances, labyrinthVisualiser);
             else if (euclideanRadioButton.Checked) algo = new AStarEuclidean(vertices, distances, labyrinthVisualiser);
             else algo = new AStarManhattan(vertices, distances, labyrinthVisualiser);
             entryPoints =
-                LabyrinthProcessor.GetEntryPointIndexes(vertices, new[] {new[] {startX, startY}, new[] {endX, endY}});
+                LabyrinthProcessor.GetEntryPointIndexes(vertices, new[] {new[] {startY, startX}, new[] {endY, endX}});
             this.background.Paint -= labyrinthVisualiser.FillLabyrinth;
             this.background.Paint += labyrinthVisualiser.FillLabyrinth;
             Refresh();

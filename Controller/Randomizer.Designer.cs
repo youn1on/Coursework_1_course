@@ -32,101 +32,101 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialForm));
+            this.randomizeButton = new System.Windows.Forms.Button();
+            this.dimenionsLabel = new System.Windows.Forms.Label();
+            this.xDimension = new System.Windows.Forms.TextBox();
+            this.deadEndCheckBox = new System.Windows.Forms.CheckBox();
+            this.yDimension = new System.Windows.Forms.TextBox();
+            this.multiplyLabel = new System.Windows.Forms.Label();
             this.box = new GroupBox();
-            this.button2 = new Button();
+            this.confirmButton = new Button();
             this.SuspendLayout();
             // 
-            // button1
+            // randomizeButton
             // 
-            this.button1.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.button1.Location = Style.RandomizeLocation;
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 67);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Randomize";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Randomize);
+            this.randomizeButton.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.randomizeButton.Location = Style.RandomizeLocation;
+            this.randomizeButton.Name = "randomizeButton";
+            this.randomizeButton.Size = new System.Drawing.Size(205, 67);
+            this.randomizeButton.TabIndex = 0;
+            this.randomizeButton.Text = "Randomize";
+            this.randomizeButton.UseVisualStyleBackColor = true;
+            this.randomizeButton.Click += new System.EventHandler(this.Randomize);
             // 
-            // button2
+            // confirmButton
             // 
-            this.button2.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.button2.Location = Style.ConfirmButtonPoint;
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(205, 67);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Confirm✓";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Confirm);
-            this.button2.BackColor = Style.ConfirmButtonColor;
+            this.confirmButton.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.confirmButton.Location = Style.ConfirmButtonPoint;
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(205, 67);
+            this.confirmButton.TabIndex = 7;
+            this.confirmButton.Text = "Confirm✓";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.Confirm);
+            this.confirmButton.BackColor = Style.ConfirmButtonColor;
             // 
-            // label1
+            // dimensionsLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(231, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 39);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Enter the labyrinth dimensions";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dimenionsLabel.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.dimenionsLabel.Location = new System.Drawing.Point(231, 9);
+            this.dimenionsLabel.Name = "dimenionsLabel";
+            this.dimenionsLabel.Size = new System.Drawing.Size(287, 39);
+            this.dimenionsLabel.TabIndex = 1;
+            this.dimenionsLabel.Text = "Enter the labyrinth dimensions";
+            this.dimenionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // xDimension
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox1.Location = new System.Drawing.Point(271, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 34);
-            this.textBox1.TabIndex = 2;
+            this.xDimension.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.xDimension.Location = new System.Drawing.Point(271, 62);
+            this.xDimension.Name = "xDimension";
+            this.xDimension.Size = new System.Drawing.Size(66, 34);
+            this.xDimension.TabIndex = 2;
             // 
-            // checkBox1
+            // deadEndCheckBox
             // 
-            this.checkBox1.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.checkBox1.Location = new System.Drawing.Point(198, 118);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(377, 38);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Create labyrinth with dead ends";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.deadEndCheckBox.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.deadEndCheckBox.Location = new System.Drawing.Point(198, 118);
+            this.deadEndCheckBox.Name = "deadEndCheckBox";
+            this.deadEndCheckBox.Size = new System.Drawing.Size(377, 38);
+            this.deadEndCheckBox.TabIndex = 3;
+            this.deadEndCheckBox.Text = "Create labyrinth with dead ends";
+            this.deadEndCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.deadEndCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // yDimension
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox2.Location = new System.Drawing.Point(396, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(66, 34);
-            this.textBox2.TabIndex = 4;
+            this.yDimension.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.yDimension.Location = new System.Drawing.Point(396, 62);
+            this.yDimension.Name = "yDimension";
+            this.yDimension.Size = new System.Drawing.Size(66, 34);
+            this.yDimension.TabIndex = 4;
             // 
-            // label2
+            // multiplyLabel
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label2.Location = new System.Drawing.Point(343, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 34);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "x";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.multiplyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.multiplyLabel.Location = new System.Drawing.Point(343, 62);
+            this.multiplyLabel.Name = "multiplyLabel";
+            this.multiplyLabel.Size = new System.Drawing.Size(47, 34);
+            this.multiplyLabel.TabIndex = 5;
+            this.multiplyLabel.Text = "x";
+            this.multiplyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // Randomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(752, 780);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Name = "Form1";
+            this.Controls.Add(this.multiplyLabel);
+            this.Controls.Add(this.yDimension);
+            this.Controls.Add(this.deadEndCheckBox);
+            this.Controls.Add(this.xDimension);
+            this.Controls.Add(this.dimenionsLabel);
+            this.Controls.Add(this.randomizeButton);
+            this.Controls.Add(this.confirmButton);
+            this.Name = "InitialForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,18 +135,18 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         private LabyrinthVisualiser labyrinthVisualiser;
         private GroupBox box;
 
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox yDimension;
+        private System.Windows.Forms.Label multiplyLabel;
 
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox deadEndCheckBox;
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox xDimension;
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label dimenionsLabel;
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button randomizeButton;
         
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button confirmButton;
 
         #endregion
     }

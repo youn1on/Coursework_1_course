@@ -120,7 +120,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             while (current.Previous != -1)
             {
                 Vertice previous = vertices[current.Previous];
-                DrawPathBetween(current, previous, Color.Blue);
+                DrawPathBetween(current, previous, Color.Crimson);
                 current = previous;
             }
             DrawPathBetween(current, current, Color.Red);
