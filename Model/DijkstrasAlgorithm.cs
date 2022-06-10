@@ -39,13 +39,14 @@ namespace Labyrinths_AStar_Dijkstra.Model
                     }
 
                     if (!Vertices[i].Passed)
-                    {
+                    {   
                         queue.Push(i, GetCriteria(Vertices[i], Vertices[endPointIndex]));
                     }
                 }
 
                 Vertices[currentVertice].Passed = true;
-                Visualiser.DrawPathBetween(Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]);
+                if (Vertices[currentVertice].Previous != -1) Visualiser.DrawPathBetween(Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]);
+                //System.Threading.Thread.Sleep(300);
             }
             return false;
         }
@@ -53,19 +54,6 @@ namespace Labyrinths_AStar_Dijkstra.Model
         protected virtual double GetCriteria(Vertice current, Vertice finish)
         {
             return current.MinDistance;
-        }
-
-        public Stack<int> TraceRoute(int finishIndex)
-        {
-            Stack<int> route = new Stack<int>();
-            int current = finishIndex;
-            while (current > -1)
-            {
-                route.Push(current);
-                current = Vertices[current].Previous;
-            }
-
-            return route;
         }
     }
 }

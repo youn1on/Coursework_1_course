@@ -14,22 +14,22 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         
         private void Confirm(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.textBox1.Text.Trim())) MessageBox.Show($"The program doesn`t accept empty path!");
-            else if (File.Exists(this.textBox1.Text))
+            if (string.IsNullOrEmpty(this.pathToFile.Text.Trim())) MessageBox.Show($"The program doesn`t accept empty path!");
+            else if (File.Exists(this.pathToFile.Text))
             {
-                string[] content = FileOperations.GetFileContent(this.textBox1.Text);
+                string[] content = FileOperations.GetFileContent(this.pathToFile.Text);
                 if (content != null)
                 {
                     Program.FileContent = content;
                     NextForm();
                 }
                 MessageBox.Show("Invalid file structure!");
-                this.textBox1.Text = "";
+                this.pathToFile.Text = "";
             }
             else
             {
-                MessageBox.Show($"Path {this.textBox1.Text} doesn't exist!");
-                this.textBox1.Text = "";
+                MessageBox.Show($"Path {this.pathToFile.Text} doesn't exist!");
+                this.pathToFile.Text = "";
             }
         }
 
@@ -44,7 +44,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the path of specified file
-                this.textBox1.Text = dialog.FileName;
+                this.pathToFile.Text = dialog.FileName;
             }
         }
 

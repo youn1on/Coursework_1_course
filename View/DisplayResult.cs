@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using System;
-using System.Text.RegularExpressions;
 using Labyrinths_AStar_Dijkstra.Model;
 using Labyrinths_AStar_Dijkstra.Controller;
 
@@ -12,10 +11,11 @@ namespace Labyrinths_AStar_Dijkstra.View
         {
             InitializeComponent();
         }
-
-        public Label background;
         private int startX, startY, endX, endY;
         private bool IsValid = false;
+        public DijkstrasAlgorithm algo;
+        public int[] entryPoints;
+        public Vertice[] vertices;
         private async void Check(object sender, EventArgs e)
         {
             if (!int.TryParse(this.coordinatesStartX.Text, out startX) || !int.TryParse(this.coordinatesStartY.Text, out startY) ||
@@ -34,6 +34,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             }
             else
             {
+                this.Controls.Remove(this.background);
                 IsValid = true;
                 this.labyrinthVisualiser =
                     new LabyrinthVisualiser(Program.labyrinth, this, new(startX, startY), new(endX, endY));
@@ -43,13 +44,24 @@ namespace Labyrinths_AStar_Dijkstra.View
         }
         private void Confirm(object sender, EventArgs e)
         {
-            if (!IsValid) Check(sender, e);
+            Check(sender, e);
             if (!IsValid)
             {
                 MessageBox.Show("Please, enter valid coordinates!");
                 return;
             }
-    
+
+            vertices = LabyrinthProcessor.GetVerticeList(Program.labyrinth,
+                new[] {new[] {startX, startY}, new[] {endX, endY}});
+            int[][] distances = LabyrinthProcessor.GetDistances(vertices, Program.labyrinth);
+            if (dijkstraRadioButton.Checked) algo = new DijkstrasAlgorithm(vertices, distances, labyrinthVisualiser);
+            else if (euclideanRadioButton.Checked) algo = new AStarEuclidean(vertices, distances, labyrinthVisualiser);
+            else algo = new AStarManhattan(vertices, distances, labyrinthVisualiser);
+            entryPoints =
+                LabyrinthProcessor.GetEntryPointIndexes(vertices, new[] {new[] {startX, startY}, new[] {endX, endY}});
+            this.background.Paint -= labyrinthVisualiser.FillLabyrinth;
+            this.background.Paint += labyrinthVisualiser.FillLabyrinth;
+            Refresh();
         }
     }
 }

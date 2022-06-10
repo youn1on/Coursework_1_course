@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Labyrinths_AStar_Dijkstra.Model.Structures;
 
 namespace Labyrinths_AStar_Dijkstra.Model
@@ -7,23 +8,23 @@ namespace Labyrinths_AStar_Dijkstra.Model
     {
         public static Vertice[] GetVerticeList(int[][] labyrinth, int[][] dots)
         {
-            Queue<Vertice> verticeList = new Queue<Vertice>();
+            List<Vertice> verticeList = new List<Vertice>();
             for (int i = 1; i < labyrinth.Length - 1; i++)
             {
                 for (int j = 1; j < labyrinth[i].Length - 1; j++)
                 {
-                    if (labyrinth[i][j] == 0 && (!IsTunnel(labyrinth, i, j) ||
+                    if (labyrinth[i][j] != 1 && (!IsTunnel(labyrinth, i, j) ||
                                                  i == dots[0][0] && j == dots[0][1] ||
                                                  i == dots[1][0] && j == dots[1][1]))
                     {
-                        verticeList.Push(new Vertice(i, j));
+                        verticeList.Add(new Vertice(i, j));
                         labyrinth[i][j] = 2;
                     }
                 }
             }
 
             Vertice[] vertices = new Vertice[verticeList.Count];
-            for (int i = 0; i < vertices.Length; i++) vertices[i] = verticeList.Pop();
+            for (int i = 0; i < vertices.Length; i++) vertices[i] = verticeList[i];
             return vertices;
         }
 

@@ -31,77 +31,77 @@ namespace Labyrinths_AStar_Dijkstra.Controller
     private void InitializeComponent()
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-      this.label1 = new System.Windows.Forms.Label();
-      this.textBox1 = new System.Windows.Forms.TextBox();
-      this.label2 = new System.Windows.Forms.Label();
-      this.button1 = new System.Windows.Forms.Button();
-      this.button2 = new System.Windows.Forms.Button();
-      this.button3 = new System.Windows.Forms.Button();
+      this.titleLabel = new System.Windows.Forms.Label();
+      this.pathToFile = new System.Windows.Forms.TextBox();
+      this.filepathLabel = new System.Windows.Forms.Label();
+      this.confirmButton = new System.Windows.Forms.Button();
+      this.selectButton = new System.Windows.Forms.Button();
+      this.randomizerButton = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
-      // label1
+      // titleLabel
       // 
-      this.label1.Location = new System.Drawing.Point(171, 50);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(480, 65);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "Please, select your labyrinth source file:";
-      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.titleLabel.Location = new System.Drawing.Point(171, 50);
+      this.titleLabel.Name = "titleLabel";
+      this.titleLabel.Size = new System.Drawing.Size(480, 65);
+      this.titleLabel.TabIndex = 0;
+      this.titleLabel.Text = "Please, select your labyrinth source file:";
+      this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // textBox1
+      // pathToFile
       // 
-      this.textBox1.Font = Style.TextFieldFont;
-      this.textBox1.Location = new System.Drawing.Point(170, 250);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(315, 50);
-      this.textBox1.TabIndex = 1;
+      this.pathToFile.Font = Style.TextFieldFont;
+      this.pathToFile.Location = new System.Drawing.Point(170, 250);
+      this.pathToFile.Name = "pathToFile";
+      this.pathToFile.Size = new System.Drawing.Size(315, 50);
+      this.pathToFile.TabIndex = 1;
       // 
-      // label2
+      // filepathLabel
       // 
-      this.label2.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-      this.label2.Location = new System.Drawing.Point(170, 210);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(480, 32);
-      this.label2.TabIndex = 2;
-      this.label2.Text = "Enter full filepath, select manually or randomize";
-      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.filepathLabel.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+      this.filepathLabel.Location = new System.Drawing.Point(170, 210);
+      this.filepathLabel.Name = "filepathLabel";
+      this.filepathLabel.Size = new System.Drawing.Size(480, 32);
+      this.filepathLabel.TabIndex = 2;
+      this.filepathLabel.Text = "Enter full filepath, select manually or randomize";
+      this.filepathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // button1
+      // confirmButton
       // 
-      this.button1.Font = Style.ButtonFont;
-      this.button1.BackColor = Style.ConfirmButtonColor;
-      this.button1.Location = new System.Drawing.Point(419, 300);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(233, 55);
-      this.button1.TabIndex = 3;
-      this.button1.Text = "Confirm ✓";
+      this.confirmButton.Font = Style.ButtonFont;
+      this.confirmButton.BackColor = Style.ConfirmButtonColor;
+      this.confirmButton.Location = new System.Drawing.Point(419, 300);
+      this.confirmButton.Name = "confirmButton";
+      this.confirmButton.Size = new System.Drawing.Size(233, 55);
+      this.confirmButton.TabIndex = 3;
+      this.confirmButton.Text = "Confirm✓";
       //this.button1.UseVisualStyleBackColor = true;
-      this.button1.Click += new System.EventHandler(this.Confirm);
-      this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.confirmButton.Click += new System.EventHandler(this.Confirm);
+      this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // button2
       // 
-      this.button2.Font = Style.ButtonFont;
-      this.button2.Location = new System.Drawing.Point(500, 250);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(152, 38);
-      this.button2.TabIndex = 4;
-      this.button2.Text = "Select manually";
-      this.button2.UseVisualStyleBackColor = true;
-      this.button2.Click += new System.EventHandler(this.Select);
-      this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.selectButton.Font = Style.ButtonFont;
+      this.selectButton.Location = new System.Drawing.Point(500, 250);
+      this.selectButton.Name = "selectButton";
+      this.selectButton.Size = new System.Drawing.Size(152, 38);
+      this.selectButton.TabIndex = 4;
+      this.selectButton.Text = "Select manually";
+      this.selectButton.UseVisualStyleBackColor = true;
+      this.selectButton.Click += new System.EventHandler(this.Select);
+      this.selectButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // button3
       // 
-      this.button3.Font = Style.ButtonFont;
-      this.button3.Location = new System.Drawing.Point(170, 300);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(233, 55);
-      this.button3.TabIndex = 5;
-      this.button3.Text = "Randomize";
-      this.button3.UseVisualStyleBackColor = true;
-      this.button3.Click += new System.EventHandler(this.Randomize);
-      this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.randomizerButton.Font = Style.ButtonFont;
+      this.randomizerButton.Location = new System.Drawing.Point(170, 300);
+      this.randomizerButton.Name = "randomizerButton";
+      this.randomizerButton.Size = new System.Drawing.Size(233, 55);
+      this.randomizerButton.TabIndex = 5;
+      this.randomizerButton.Text = "Randomize";
+      this.randomizerButton.UseVisualStyleBackColor = true;
+      this.randomizerButton.Click += new System.EventHandler(this.Randomize);
+      this.randomizerButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // Form1
       // 
@@ -109,12 +109,12 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
       this.ClientSize = new System.Drawing.Size(825, 450);
-      this.Controls.Add(this.button3);
-      this.Controls.Add(this.button2);
-      this.Controls.Add(this.button1);
-      this.Controls.Add(this.label2);
-      this.Controls.Add(this.textBox1);
-      this.Controls.Add(this.label1);
+      this.Controls.Add(this.randomizerButton);
+      this.Controls.Add(this.selectButton);
+      this.Controls.Add(this.confirmButton);
+      this.Controls.Add(this.filepathLabel);
+      this.Controls.Add(this.pathToFile);
+      this.Controls.Add(this.titleLabel);
       this.Font = new System.Drawing.Font("Goudy Old Style", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
       this.Margin = new System.Windows.Forms.Padding(6);
       this.Name = "Form1";
@@ -123,15 +123,12 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.PerformLayout();
     }
 
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.Button button3;
-
-    private System.Windows.Forms.Label label2;
-
-    private System.Windows.Forms.TextBox textBox1;
-
-    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Button confirmButton;
+    private System.Windows.Forms.Button selectButton;
+    private System.Windows.Forms.Button randomizerButton;
+    private System.Windows.Forms.Label filepathLabel;
+    private System.Windows.Forms.TextBox pathToFile;
+    private System.Windows.Forms.Label titleLabel;
 
     #endregion
   }

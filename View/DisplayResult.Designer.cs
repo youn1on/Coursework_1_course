@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Labyrinths_AStar_Dijkstra.View
 {
@@ -86,6 +87,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.check.Size = new System.Drawing.Size(191, 47);
             this.check.TabIndex = 3;
             this.check.Text = "Check";
+            this.check.Click += new(this.Check);
             this.check.UseVisualStyleBackColor = true;
             // 
             // confirm
@@ -95,6 +97,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.confirm.Size = new System.Drawing.Size(194, 45);
             this.confirm.TabIndex = 4;
             this.confirm.Text = "Confirm✓";
+            this.confirm.Click += new(this.Confirm);
             this.confirm.UseVisualStyleBackColor = true;
             // 
             // Title
@@ -204,6 +207,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.Controls.Add(this.euclideanRadioButton);
             this.Controls.Add(this.manhattanRadioButton);
             this.Controls.Add(this.dijkstraRadioButton);
+            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);
             this.Name = "DisplayResultForm";
             this.Text = "Form1";
             this.ResumeLayout(false);

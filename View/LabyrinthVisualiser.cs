@@ -13,11 +13,13 @@ namespace Labyrinths_AStar_Dijkstra.View
         private Point _start, _finish;
         private readonly int _cellSize;
         private PaintEventArgs paintEventArgs;
+        private Randomizer form;
 
-        public LabyrinthVisualiser(int[][] labyrinth, Randomizer form, Point start = default, Point finish = default)
+        public LabyrinthVisualiser(int[][] labyrinth, Randomizer _form, Point start = default, Point finish = default)
         {
             _start = start;
             _finish = finish;
+            form = _form;
             _cellSize = labyrinth.Length > labyrinth[0].Length
                 ? Style.VisualizedLabyrinthSize.Height / labyrinth.Length
                 : Style.VisualizedLabyrinthSize.Width / labyrinth[0].Length;
@@ -28,15 +30,16 @@ namespace Labyrinths_AStar_Dijkstra.View
             form.background.Location = new Point(
                 Style.LabyrinthLocation.X + (Style.VisualizedLabyrinthSize.Width - form.background.Size.Width) / 2,
                 Style.LabyrinthLocation.Y + (Style.VisualizedLabyrinthSize.Height - form.background.Size.Height) / 2);
-            form.background.Paint += new PaintEventHandler(Draw);
+            form.background.Paint += DrawLabyrinth;
             form.Controls.Add(form.background);
+            
         }
 
-        public void Draw(object sender, PaintEventArgs e)
+        public void DrawLabyrinth(object sender, PaintEventArgs e)
         {
             paintEventArgs = e;
             Pen pen = new Pen(Color.White, _cellSize);
-            Vertice[] vertices = LabyrinthProcessor.GetVerticeList(labyrinth, new[] {new[] {0, 0}, new[] {0, 0}});
+            Vertice[] vertices = LabyrinthProcessor.GetVerticeList(labyrinth, _start == default? new[] {new[] {1, 1}, new[] {1, 1}}:new[] {new[]{_start.X, _start.Y}, new[]{_finish.X, _finish.Y}});
             int[][] distances = LabyrinthProcessor.GetDistances(vertices, labyrinth);
 
             for (int i = 0; i < distances.Length; i++)
@@ -77,6 +80,14 @@ namespace Labyrinths_AStar_Dijkstra.View
                 e.Graphics.DrawLine(pen, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize+_cellSize);
             }
         }
+
+        public void FillLabyrinth(object sender, PaintEventArgs e)
+        {
+            paintEventArgs = e;
+            DisplayResult _form = (DisplayResult)form;
+            _form.algo.FindRoute(_form.entryPoints[0], _form.entryPoints[1]);
+            DrawRoute(_form.vertices, _form.entryPoints[1]);
+        }
         
         public void DrawPathBetween(Vertice vertice1, Vertice vertice2, Color pathColor = default)
         {
@@ -105,7 +116,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         public void DrawRoute(Vertice[] vertices, int finIndex)
         {
             Vertice current = vertices[finIndex];
-            DrawPathBetween(current, current, Color.Blue);
+            DrawPathBetween(current, current, Color.Red);
             while (current.Previous != -1)
             {
                 Vertice previous = vertices[current.Previous];
