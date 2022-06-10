@@ -7,12 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="Controller\Form1.cs">
+      <Compile Update="Controller\InitialForm.cs">
         <SubType>Form</SubType>
       </Compile>
       <Compile Update="Controller\Randomizer.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="View\DisplayResult.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Remove="Controller\FilenameOperations.cs" />
+      <Compile Remove="Controller\DotsInput.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -6,13 +6,11 @@ namespace Labyrinths_AStar_Dijkstra.Model.Structures
     {
         public int Count { get; protected set; }
         public Node<int> Head { get; set; }
-        private Node<int> _tail;
 
         public PriorityQueue()
         {
             Count = 0;
             Head = null;
-            _tail = null;
         }
         public int Pop()
         {

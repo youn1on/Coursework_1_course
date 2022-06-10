@@ -1,20 +1,9 @@
 ﻿using System;
 
-namespace Labyrinths.Controller{
+namespace Labytinth.Controller{
 
     public class DotsInput
-    {
-
-        public static int[][] GetDots(int[][] labyrinth)
-        {
-            Console.WriteLine("Enter startpoint");
-            int[] startpointCoordinates = GetValidCoordinates(labyrinth);
-            Console.WriteLine("Enter endpoint");
-            int[] endpointCoordinates = GetValidCoordinates(labyrinth);
-            return new int[][] {startpointCoordinates, endpointCoordinates};
-
-        }
-
+    { 
         public static int[] GetValidCoordinates(int[][] labyrinth)
         {
             int[] coordinates = new int[2];
