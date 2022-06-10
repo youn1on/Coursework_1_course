@@ -19,7 +19,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         }
         public bool FindRoute(int startPointIndex, int endPointIndex)
         {
-            PriorityQueue<int> queue = new PriorityQueue<int>();
+            PriorityQueue queue = new PriorityQueue();
             Vertices[startPointIndex].MinDistance = 0;
             queue.Push(startPointIndex, 0);
             

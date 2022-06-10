@@ -2,11 +2,11 @@
 
 namespace Labyrinths_AStar_Dijkstra.Model.Structures
 {
-    public class PriorityQueue<T>
+    public class PriorityQueue
     {
         public int Count { get; protected set; }
-        public Node<T> Head { get; set; }
-        private Node<T> _tail;
+        public Node<int> Head { get; set; }
+        private Node<int> _tail;
 
         public PriorityQueue()
         {
@@ -14,27 +14,39 @@ namespace Labyrinths_AStar_Dijkstra.Model.Structures
             Head = null;
             _tail = null;
         }
-        public T Pop()
+        public int Pop()
         {
             if (Head == null) throw new IndexOutOfRangeException();
-            Node<T> headNode = Head;
+            Node<int> headNode = Head;
             Head = Head.Next;
             Count--;
             return headNode.Value;
         }
-        public void Push(T value, double criteria)
+        public void Push(int value, double criteria)
         {
-            Node<T> newNode = new Node<T>(value, criteria);
+            Node<int> newNode = new Node<int>(value, criteria);
             if (Head == null)
             {
                 Head = newNode;
             }
             else
             {
-                Node<T> last = Head;
-                while (last.Next != null && last.Next.Criteria <= newNode.Criteria) last = last.Next;
+                Node<int> last = Head;
+                while (last.Next != null && last.Next.Criteria <= newNode.Criteria)
+                {
+                    last = last.Next;
+                    if (last.Value == newNode.Value) return;
+                }
+                if (last.Value == newNode.Value) return;
                 newNode.Next = last.Next;
                 last.Next = newNode;
+                last = newNode;
+                while (last != null && last.Next is not null)
+                {
+                    if (last.Next.Value == newNode.Value) last.Next = last.Next.Next;
+                    last = last.Next;
+                }
+                
             }
 
             Count++;

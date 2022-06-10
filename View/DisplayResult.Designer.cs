@@ -52,7 +52,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // dijkstraRadioButton
             // 
-            this.dijkstraRadioButton.Location = new System.Drawing.Point(57, 180);
+            this.dijkstraRadioButton.Location = new System.Drawing.Point(105, 180);
             this.dijkstraRadioButton.Name = "dijkstraRadioButton";
             this.dijkstraRadioButton.Size = new System.Drawing.Size(140, 25);
             this.dijkstraRadioButton.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // manhattanRadioButton
             // 
-            this.manhattanRadioButton.Location = new System.Drawing.Point(198, 180);
+            this.manhattanRadioButton.Location = new System.Drawing.Point(305, 180);
             this.manhattanRadioButton.Name = "manhattanRadioButton";
             this.manhattanRadioButton.Size = new System.Drawing.Size(140, 25);
             this.manhattanRadioButton.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // euclideanRadioButton
             // 
-            this.euclideanRadioButton.Location = new System.Drawing.Point(358, 180);
+            this.euclideanRadioButton.Location = new System.Drawing.Point(505, 180);
             this.euclideanRadioButton.Name = "euclideanRadioButton";
             this.euclideanRadioButton.Size = new System.Drawing.Size(140, 25);
             this.euclideanRadioButton.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // check
             // 
-            this.check.Location = new System.Drawing.Point(48, 120);
+            this.check.Location = Style.CheckButtonPoint;
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(191, 47);
             this.check.TabIndex = 3;
@@ -92,7 +92,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // confirm
             // 
-            this.confirm.Location = new System.Drawing.Point(307, 120);
+            this.confirm.Location = Style.ConfirmVisualiserPoint;
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(194, 45);
             this.confirm.TabIndex = 4;
@@ -102,7 +102,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // title
             // 
-            this.title.Location = new System.Drawing.Point(250, 12);
+            this.title.Location = new System.Drawing.Point(230, 12);
             this.title.Name = "title";
             this.title.TextAlign = ContentAlignment.MiddleCenter;
             this.title.Size = new System.Drawing.Size(320, 22);
@@ -149,14 +149,14 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // coordinatesEndY
             // 
-            this.coordinatesEndY.Location = new System.Drawing.Point(570, 66);
+            this.coordinatesEndY.Location = new System.Drawing.Point(615, 66);
             this.coordinatesEndY.Name = "coordinatesEndY";
             this.coordinatesEndY.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndY.TabIndex = 17;
             // 
             // yEndLabel
             // 
-            this.yEndLabel.Location = new System.Drawing.Point(535, 66);
+            this.yEndLabel.Location = new System.Drawing.Point(593, 66);
             this.yEndLabel.Name = "yEndLabel";
             this.yEndLabel.Size = new System.Drawing.Size(15, 17);
             this.yEndLabel.TabIndex = 16;
@@ -164,7 +164,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // xEndLabel
             // 
-            this.xEndLabel.Location = new System.Drawing.Point(512, 66);
+            this.xEndLabel.Location = new System.Drawing.Point(530, 66);
             this.xEndLabel.Name = "xEndLabel";
             this.xEndLabel.Size = new System.Drawing.Size(15, 17);
             this.xEndLabel.TabIndex = 15;
@@ -180,12 +180,12 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // coordinatesEndX
             // 
-            this.coordinatesEndX.Location = new System.Drawing.Point(535, 66);
+            this.coordinatesEndX.Location = new System.Drawing.Point(555, 66);
             this.coordinatesEndX.Name = "coordinatesEndX";
             this.coordinatesEndX.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndX.TabIndex = 13;
             // 
-            // Form1
+            // DisplayResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
