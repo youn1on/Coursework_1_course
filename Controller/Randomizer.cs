@@ -11,10 +11,17 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         public Randomizer()
         {
             InitializeComponent();
+            Load += OnLoad;
         }
 
         public Label background;
-        private async void Randomize(object sender, EventArgs e)
+
+        public void OnLoad(object sender, EventArgs e)
+        {
+            this.Location = Style.RandomizerFormLocation;
+        }
+        
+        private void Randomize(object sender, EventArgs e)
         {
             string pattern = @"^[3-9]$|^\d\d$";
             if (!Regex.IsMatch(xDimension.Text, pattern) || !Regex.IsMatch(yDimension.Text, pattern))
@@ -29,16 +36,28 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             Program.labyrinth = deadEndCheckBox.Checked
                 ? LabyrinthGenerator.GenerateDeadEndLabyrinth(sizeX, sizeY)
                 : LabyrinthGenerator.GenerateLabyrinth(sizeX, sizeY);
-            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);
+            this.labyrinthVisualiser = new LabyrinthVisualiser(this);
             Refresh();
+        }
+
+        private void GoBack(object sender, EventArgs e)
+        {
+            Program.ClosedByUser = false;
+            this.Close();
         }
         private void Confirm(object sender, EventArgs e)
         {
             if (Program.labyrinth == null) MessageBox.Show("Please randomize labyrinth first");
             else
             {
-                Program.ClosedByUser = false;
-                Close();
+                this.Hide();
+                new DisplayResult().ShowDialog();
+                if (Program.ClosedByUser) Close();
+                else
+                {
+                    Program.ClosedByUser = true;
+                    this.Show();
+                }
             }
         }
     }

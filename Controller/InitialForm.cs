@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using Labyrinths_AStar_Dijkstra.Model;
+using Labyrinths_AStar_Dijkstra.View;
 
 namespace Labyrinths_AStar_Dijkstra.Controller
 {
@@ -10,8 +11,13 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         public InitialForm()
         {
             InitializeComponent();
+            Load += OnLoad;
         }
         
+        private void OnLoad(object sender, EventArgs e)
+        {
+            Location = Style.SmallFormLocation;
+        }
         private void Confirm(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(this.pathToFile.Text.Trim())) MessageBox.Show($"The program doesn`t accept empty path!");
@@ -20,11 +26,21 @@ namespace Labyrinths_AStar_Dijkstra.Controller
                 string[] content = FileOperations.GetFileContent(this.pathToFile.Text);
                 if (content != null)
                 {
-                    Program.FileContent = content;
-                    NextForm();
+                    Program.labyrinth = FileContentProcessor.GetLabyrinthMatrix(content);
+                    Hide();
+                    new DisplayResult().ShowDialog();
+                    if (Program.ClosedByUser) Close();
+                    else
+                    {
+                        this.Show();
+                        Program.ClosedByUser = true;
+                    }
                 }
-                MessageBox.Show("Invalid file structure!");
-                this.pathToFile.Text = "";
+                else
+                {
+                    MessageBox.Show("Invalid file structure!");
+                    this.pathToFile.Text = "";
+                }
             }
             else
             {
@@ -50,18 +66,13 @@ namespace Labyrinths_AStar_Dijkstra.Controller
 
         private void Randomize(object sender, EventArgs e)
         {
-            NextForm();
+            this.Hide();
+            new Randomizer().ShowDialog();
+            if (Program.ClosedByUser) Close();
+            {
+                this.Show();
+                Program.ClosedByUser = true;
+            }
         }
-       private void Display(object sender, EventArgs e)
-       {
-           NextForm();
-       }
-
-        private void NextForm()
-        {
-            Program.ClosedByUser = false;
-            Close();
-        }
-        
     }
 }

@@ -32,6 +32,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.goBackButton = new System.Windows.Forms.Button();
             this.dijkstraRadioButton = new System.Windows.Forms.RadioButton();
             this.manhattanRadioButton = new System.Windows.Forms.RadioButton();
             this.euclideanRadioButton = new System.Windows.Forms.RadioButton();
@@ -48,47 +49,63 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.xEndLabel = new System.Windows.Forms.Label();
             this.endpointLabel = new System.Windows.Forms.Label();
             this.coordinatesEndX = new System.Windows.Forms.TextBox();
+            this.quickSearch = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // dijkstraRadioButton
             // 
-            this.dijkstraRadioButton.Location = new System.Drawing.Point(105, 180);
+            this.dijkstraRadioButton.Location = new System.Drawing.Point(65, 150);
             this.dijkstraRadioButton.Name = "dijkstraRadioButton";
             this.dijkstraRadioButton.Size = new System.Drawing.Size(140, 25);
             this.dijkstraRadioButton.TabIndex = 0;
             this.dijkstraRadioButton.TabStop = true;
             this.dijkstraRadioButton.Text = "Dijkstra";
             this.dijkstraRadioButton.UseVisualStyleBackColor = true;
+            this.dijkstraRadioButton.Font = Style.SmallFont;
             // 
             // manhattanRadioButton
             // 
-            this.manhattanRadioButton.Location = new System.Drawing.Point(305, 180);
+            this.manhattanRadioButton.Location = new System.Drawing.Point(250, 150);
             this.manhattanRadioButton.Name = "manhattanRadioButton";
-            this.manhattanRadioButton.Size = new System.Drawing.Size(140, 25);
+            this.manhattanRadioButton.Size = new System.Drawing.Size(195, 25);
             this.manhattanRadioButton.TabIndex = 1;
             this.manhattanRadioButton.TabStop = true;
             this.manhattanRadioButton.Text = "A* Manhattan";
             this.manhattanRadioButton.UseVisualStyleBackColor = true;
+            this.manhattanRadioButton.Font = Style.SmallFont;
             // 
             // euclideanRadioButton
             // 
-            this.euclideanRadioButton.Location = new System.Drawing.Point(505, 180);
+            this.euclideanRadioButton.Location = new System.Drawing.Point(495, 150);
             this.euclideanRadioButton.Name = "euclideanRadioButton";
-            this.euclideanRadioButton.Size = new System.Drawing.Size(140, 25);
+            this.euclideanRadioButton.Size = new System.Drawing.Size(200, 25);
             this.euclideanRadioButton.TabIndex = 2;
             this.euclideanRadioButton.TabStop = true;
             this.euclideanRadioButton.Text = "A* Euclidean";
             this.euclideanRadioButton.UseVisualStyleBackColor = true;
+            this.euclideanRadioButton.Font = Style.SmallFont;
             // 
             // check
             // 
-            this.check.Location = Style.CheckButtonPoint;
+            this.check.Location = Style.CheckVisualiserPoint;
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(191, 47);
             this.check.TabIndex = 3;
             this.check.Text = "Check";
             this.check.Click += new(this.Check);
             this.check.UseVisualStyleBackColor = true;
+            this.check.Font = Style.ButtonFont;
+            // 
+            // quickSearch
+            // 
+            this.quickSearch.Font = Style.ButtonFont;
+            this.quickSearch.Location = new System.Drawing.Point(198, 190);
+            this.quickSearch.Name = "quickSearch";
+            this.quickSearch.Size = new System.Drawing.Size(377, 38);
+            this.quickSearch.TabIndex = 18;
+            this.quickSearch.Text = "Quick search";
+            this.quickSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.quickSearch.UseVisualStyleBackColor = true;
             // 
             // confirm
             // 
@@ -99,97 +116,130 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.confirm.Text = "Confirm✓";
             this.confirm.BackColor = Style.ConfirmButtonColor;
             this.confirm.Click += new(this.Confirm);
+            this.confirm.Font = Style.ButtonFont;
             // 
             // title
             // 
-            this.title.Location = new System.Drawing.Point(230, 12);
+            this.title.Location = new System.Drawing.Point(130, 12);
             this.title.Name = "title";
             this.title.TextAlign = ContentAlignment.MiddleCenter;
-            this.title.Size = new System.Drawing.Size(320, 22);
+            this.title.Size = new System.Drawing.Size(500, 22);
             this.title.TabIndex = 5;
             this.title.Text = "Enter coordinates of startpoint and endpoint";
+            this.title.TextAlign = ContentAlignment.MiddleCenter;
+            this.title.Font = Style.SmallFont;
             // 
             // coordinatesStartX
             // 
-            this.coordinatesStartX.Location = new System.Drawing.Point(237, 66);
+            this.coordinatesStartX.Location = new System.Drawing.Point(235, 53);
             this.coordinatesStartX.Name = "coordinatesStartX";
             this.coordinatesStartX.Size = new System.Drawing.Size(30, 22);
             this.coordinatesStartX.TabIndex = 6;
+            this.coordinatesStartX.Font = Style.TextFieldFont;
+            
             // 
             // startpointLabel
             // 
-            this.startpointLabel.Location = new System.Drawing.Point(115, 66);
+            this.startpointLabel.Location = new System.Drawing.Point(100, 50);
             this.startpointLabel.Name = "startpointLabel";
-            this.startpointLabel.Size = new System.Drawing.Size(80, 35);
+            this.startpointLabel.Size = new System.Drawing.Size(110, 35);
             this.startpointLabel.TabIndex = 8;
             this.startpointLabel.Text = "Startpoint";
+            this.startpointLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.startpointLabel.Font = Style.SmallFont;
             // 
             // xLabel
             // 
-            this.xLabel.Location = new System.Drawing.Point(215, 66);
+            this.xLabel.Location = new System.Drawing.Point(220, 54);
             this.xLabel.Name = "xLabel";
-            this.xLabel.Size = new System.Drawing.Size(15, 17);
+            this.xLabel.Size = new System.Drawing.Size(15, 26);
             this.xLabel.TabIndex = 10;
             this.xLabel.Text = "x";
+            this.xLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.xLabel.Font = Style.TextFieldFont;
             // 
             // yLabel
             // 
-            this.yLabel.Location = new System.Drawing.Point(276, 66);
+            this.yLabel.Location = new System.Drawing.Point(265, 54);
             this.yLabel.Name = "yLabel";
-            this.yLabel.Size = new System.Drawing.Size(15, 17);
+            this.yLabel.Size = new System.Drawing.Size(15, 26);
             this.yLabel.TabIndex = 11;
             this.yLabel.Text = "y";
+            this.yLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.yLabel.Font = Style.TextFieldFont;
             // 
             // coordinatesStartY
             // 
-            this.coordinatesStartY.Location = new System.Drawing.Point(300, 66);
+            this.coordinatesStartY.Location = new System.Drawing.Point(280, 53);
             this.coordinatesStartY.Name = "coordinatesStartY";
             this.coordinatesStartY.Size = new System.Drawing.Size(30, 22);
             this.coordinatesStartY.TabIndex = 12;
+            this.coordinatesStartY.Font = Style.TextFieldFont;
             // 
             // coordinatesEndY
             // 
-            this.coordinatesEndY.Location = new System.Drawing.Point(615, 66);
+            this.coordinatesEndY.Location = new System.Drawing.Point(590, 53);
             this.coordinatesEndY.Name = "coordinatesEndY";
             this.coordinatesEndY.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndY.TabIndex = 17;
+            this.coordinatesEndY.Font = Style.TextFieldFont;
             // 
             // yEndLabel
             // 
-            this.yEndLabel.Location = new System.Drawing.Point(593, 66);
+            this.yEndLabel.Location = new System.Drawing.Point(575, 54);
             this.yEndLabel.Name = "yEndLabel";
-            this.yEndLabel.Size = new System.Drawing.Size(15, 17);
+            this.yEndLabel.Size = new System.Drawing.Size(15, 26);
             this.yEndLabel.TabIndex = 16;
             this.yEndLabel.Text = "y";
+            this.yEndLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.yEndLabel.Font = Style.TextFieldFont;
+
             // 
             // xEndLabel
             // 
-            this.xEndLabel.Location = new System.Drawing.Point(530, 66);
+            this.xEndLabel.Location = new System.Drawing.Point(530, 54);
             this.xEndLabel.Name = "xEndLabel";
-            this.xEndLabel.Size = new System.Drawing.Size(15, 17);
+            this.xEndLabel.Size = new System.Drawing.Size(15, 26);
             this.xEndLabel.TabIndex = 15;
             this.xEndLabel.Text = "x";
+            this.xEndLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.xEndLabel.Font = Style.TextFieldFont;
             // 
             // endpointLabel
             // 
-            this.endpointLabel.Location = new System.Drawing.Point(430, 66);
+            this.endpointLabel.Location = new System.Drawing.Point(420, 50);
             this.endpointLabel.Name = "endpointLabel";
-            this.endpointLabel.Size = new System.Drawing.Size(82, 35);
+            this.endpointLabel.Size = new System.Drawing.Size(100, 35);
             this.endpointLabel.TabIndex = 14;
             this.endpointLabel.Text = "Endpoint";
+            this.endpointLabel.TextAlign = ContentAlignment.MiddleCenter;
+            this.endpointLabel.Font = Style.SmallFont;
             // 
             // coordinatesEndX
             // 
-            this.coordinatesEndX.Location = new System.Drawing.Point(555, 66);
+            this.coordinatesEndX.Location = new System.Drawing.Point(545, 53);
             this.coordinatesEndX.Name = "coordinatesEndX";
             this.coordinatesEndX.Size = new System.Drawing.Size(30, 22);
             this.coordinatesEndX.TabIndex = 13;
+            this.coordinatesEndX.Font = Style.TextFieldFont;
+            // 
+            // goBackButton
+            // 
+            this.goBackButton.Font = Style.ButtonFont;
+            this.goBackButton.Location = Style.BackButtonLocation;
+            this.goBackButton.Name = "goBackButton";
+            this.goBackButton.Size = Style.BackButtonSize;
+            this.goBackButton.TabIndex = 18;
+            this.goBackButton.Text = "<";
+            this.goBackButton.UseVisualStyleBackColor = true;
+            this.goBackButton.Click += new System.EventHandler(this.GoBack);
+            this.goBackButton.UseVisualStyleBackColor = true;
             // 
             // DisplayResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 780);
+            this.ClientSize = Style.FullFormSize;
             this.Controls.Clear();
             this.Controls.Add(this.coordinatesEndY);
             this.Controls.Add(this.yEndLabel);
@@ -207,7 +257,9 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.Controls.Add(this.euclideanRadioButton);
             this.Controls.Add(this.manhattanRadioButton);
             this.Controls.Add(this.dijkstraRadioButton);
-            this.labyrinthVisualiser = new LabyrinthVisualiser(Program.labyrinth, this);
+            this.Controls.Add(this.quickSearch);
+            this.Controls.Add(this.goBackButton);
+            this.labyrinthVisualiser = new LabyrinthVisualiser(this);
             this.Name = "DisplayResultForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -228,9 +280,11 @@ namespace Labyrinths_AStar_Dijkstra.View
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.Button check;
+        private System.Windows.Forms.CheckBox quickSearch;
         private System.Windows.Forms.RadioButton euclideanRadioButton;
         private System.Windows.Forms.RadioButton dijkstraRadioButton;
         private System.Windows.Forms.RadioButton manhattanRadioButton;
+        private System.Windows.Forms.Button goBackButton;
 
         #endregion
     }

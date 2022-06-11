@@ -29,19 +29,28 @@ namespace Labyrinths_AStar_Dijkstra.Model.Structures
             }
             else
             {
-                Node<int> last = Head;
-                while (last.Next != null && last.Next.Criteria <= newNode.Criteria)
+                Node<int> last;
+                if (Head.Criteria>newNode.Criteria)
                 {
-                    last = last.Next;
-                    if (last.Value == newNode.Value) return;
+                    newNode.Next = Head;
+                    Head = newNode;
                 }
-                if (last.Value == newNode.Value) return;
-                newNode.Next = last.Next;
-                last.Next = newNode;
+                else
+                {
+                    last = Head;
+                    while (last.Next != null && last.Next.Criteria <= newNode.Criteria)
+                    {
+                        last = last.Next;
+                        if (last.Value == newNode.Value) return;
+                    }
+                    if (last.Value == newNode.Value) return;
+                    newNode.Next = last.Next;
+                    last.Next = newNode;
+                }
                 last = newNode;
                 while (last != null && last.Next is not null)
                 {
-                    if (last.Next.Value == newNode.Value) last.Next = last.Next.Next;
+                    while (last.Next.Value == newNode.Value) last.Next = last.Next.Next;
                     last = last.Next;
                 }
                 

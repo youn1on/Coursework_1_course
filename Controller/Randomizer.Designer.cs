@@ -34,6 +34,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialForm));
             this.randomizeButton = new System.Windows.Forms.Button();
+            this.goBackButton = new System.Windows.Forms.Button();
             this.dimenionsLabel = new System.Windows.Forms.Label();
             this.xDimension = new System.Windows.Forms.TextBox();
             this.deadEndCheckBox = new System.Windows.Forms.CheckBox();
@@ -45,7 +46,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             // 
             // randomizeButton
             // 
-            this.randomizeButton.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.randomizeButton.Font = Style.ButtonFont;
             this.randomizeButton.Location = Style.RandomizeLocation;
             this.randomizeButton.Name = "randomizeButton";
             this.randomizeButton.Size = new System.Drawing.Size(205, 67);
@@ -56,7 +57,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             // 
             // confirmButton
             // 
-            this.confirmButton.Font = new System.Drawing.Font("Goudy Old Style", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.confirmButton.Font = Style.ButtonFont;
             this.confirmButton.Location = Style.ConfirmButtonPoint;
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(205, 67);
@@ -68,17 +69,17 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             // 
             // dimensionsLabel
             // 
-            this.dimenionsLabel.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.dimenionsLabel.Location = new System.Drawing.Point(231, 9);
+            this.dimenionsLabel.Font = Style.SmallFont;
+            this.dimenionsLabel.Location = new System.Drawing.Point(200, 9);
             this.dimenionsLabel.Name = "dimenionsLabel";
-            this.dimenionsLabel.Size = new System.Drawing.Size(287, 39);
+            this.dimenionsLabel.Size = new System.Drawing.Size(350, 39);
             this.dimenionsLabel.TabIndex = 1;
             this.dimenionsLabel.Text = "Enter the labyrinth dimensions";
             this.dimenionsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // xDimension
             // 
-            this.xDimension.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.xDimension.Font = Style.SmallFont;
             this.xDimension.Location = new System.Drawing.Point(271, 62);
             this.xDimension.Name = "xDimension";
             this.xDimension.Size = new System.Drawing.Size(66, 34);
@@ -86,39 +87,51 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             // 
             // deadEndCheckBox
             // 
-            this.deadEndCheckBox.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.deadEndCheckBox.Font = Style.SmallFont;
             this.deadEndCheckBox.Location = new System.Drawing.Point(198, 118);
             this.deadEndCheckBox.Name = "deadEndCheckBox";
             this.deadEndCheckBox.Size = new System.Drawing.Size(377, 38);
-            this.deadEndCheckBox.TabIndex = 3;
+            this.deadEndCheckBox.TabIndex = 4;
             this.deadEndCheckBox.Text = "Create labyrinth with dead ends";
             this.deadEndCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.deadEndCheckBox.UseVisualStyleBackColor = true;
             // 
             // yDimension
             // 
-            this.yDimension.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.yDimension.Font = Style.SmallFont;
             this.yDimension.Location = new System.Drawing.Point(396, 62);
             this.yDimension.Name = "yDimension";
             this.yDimension.Size = new System.Drawing.Size(66, 34);
-            this.yDimension.TabIndex = 4;
+            this.yDimension.TabIndex = 3;
             // 
             // multiplyLabel
             // 
-            this.multiplyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.multiplyLabel.Font = Style.MultiplyLabelFont;
             this.multiplyLabel.Location = new System.Drawing.Point(343, 62);
             this.multiplyLabel.Name = "multiplyLabel";
-            this.multiplyLabel.Size = new System.Drawing.Size(47, 34);
+            this.multiplyLabel.Size = new System.Drawing.Size(47, 26);
             this.multiplyLabel.TabIndex = 5;
             this.multiplyLabel.Text = "x";
             this.multiplyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // goBackButton
+            // 
+            this.goBackButton.Font = Style.ButtonFont;
+            this.goBackButton.Location = Style.BackButtonLocation;
+            this.goBackButton.Name = "goBackButton";
+            this.goBackButton.Size = Style.BackButtonSize;
+            this.goBackButton.TabIndex = 8;
+            this.goBackButton.Text = "<";
+            this.goBackButton.UseVisualStyleBackColor = true;
+            this.goBackButton.Click += new System.EventHandler(this.GoBack);
+            this.goBackButton.UseVisualStyleBackColor = true;
             // 
             // Randomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(752, 780);
+            this.ClientSize = Style.RandomizerFormSize;
             this.Controls.Add(this.multiplyLabel);
             this.Controls.Add(this.yDimension);
             this.Controls.Add(this.deadEndCheckBox);
@@ -126,6 +139,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.Controls.Add(this.dimenionsLabel);
             this.Controls.Add(this.randomizeButton);
             this.Controls.Add(this.confirmButton);
+            this.Controls.Add(this.goBackButton);
             this.Name = "InitialForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -147,6 +161,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         private System.Windows.Forms.Button randomizeButton;
         
         private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.Button goBackButton;
 
         #endregion
     }

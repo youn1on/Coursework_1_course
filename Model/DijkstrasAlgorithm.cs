@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Windows.Forms;
 using Labyrinths_AStar_Dijkstra.Model.Structures;
 using Labyrinths_AStar_Dijkstra.View;
 
@@ -11,6 +11,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         protected readonly Vertice[] Vertices;
         protected readonly int[][] DistanceMatrix;
         protected LabyrinthVisualiser Visualiser;
+        public bool animated = false;
         public DijkstrasAlgorithm(Vertice[] vertices, int[][] distanceMatrix, LabyrinthVisualiser visualiser)
         {
             Vertices = vertices;
@@ -19,6 +20,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         }
         public bool FindRoute(int startPointIndex, int endPointIndex)
         {
+            //MessageBox.Show("");
             PriorityQueue queue = new PriorityQueue();
             Vertices[startPointIndex].MinDistance = 0;
             queue.Push(startPointIndex, 0);
@@ -26,7 +28,11 @@ namespace Labyrinths_AStar_Dijkstra.Model
             while (queue.Count > 0)
             {
                 int currentVertice = queue.Pop();
-                if (currentVertice == endPointIndex) return true;
+                if (currentVertice == endPointIndex)
+                {
+                    MessageBox.Show($"{Visualiser.passed.Count}");
+                    return true;
+                }
                 for (int i = 0; i<Vertices.Length; i++)
                 {
                     if (DistanceMatrix[currentVertice][i]==Int32.MaxValue/2) continue;
@@ -45,8 +51,9 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 }
 
                 Vertices[currentVertice].Passed = true;
-                if (Vertices[currentVertice].Previous != -1) Visualiser.DrawPathBetween(Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]);
-                //System.Threading.Thread.Sleep(300);
+                if (Vertices[currentVertice].Previous != -1) Visualiser.passed.Add((Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]));
+                if (animated) Visualiser.Refresh();
+                if (Vertices.Length<1000 && animated) System.Threading.Thread.Sleep(3000/Vertices.Length);
             }
             return false;
         }

@@ -41,6 +41,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       // 
       // titleLabel
       // 
+      this.titleLabel.Font = Style.ButtonFont;
       this.titleLabel.Location = new System.Drawing.Point(171, 50);
       this.titleLabel.Name = "titleLabel";
       this.titleLabel.Size = new System.Drawing.Size(480, 65);
@@ -58,7 +59,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       // 
       // filepathLabel
       // 
-      this.filepathLabel.Font = new System.Drawing.Font("Goudy Old Style", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+      this.filepathLabel.Font = Style.SmallFont;
       this.filepathLabel.Location = new System.Drawing.Point(170, 210);
       this.filepathLabel.Name = "filepathLabel";
       this.filepathLabel.Size = new System.Drawing.Size(480, 32);
@@ -108,7 +109,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 32F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
-      this.ClientSize = new System.Drawing.Size(825, 450);
+      this.ClientSize = Style.SmallFormSize;
       this.Controls.Add(this.randomizerButton);
       this.Controls.Add(this.selectButton);
       this.Controls.Add(this.confirmButton);

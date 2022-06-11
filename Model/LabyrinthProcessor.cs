@@ -6,8 +6,17 @@ namespace Labyrinths_AStar_Dijkstra.Model
 {
     public class LabyrinthProcessor
     {
-        public static Vertice[] GetVerticeList(int[][] labyrinth, int[][] dots)
+        public static Vertice[] GetVerticeList(int[][] _labyrinth, int[][] dots)
         {
+            int[][] labyrinth = new int[_labyrinth.Length][];
+            for (int i = 0; i < _labyrinth.Length; i++)
+            {
+                labyrinth[i] = new int[_labyrinth[0].Length];
+                for (int j = 0; j < _labyrinth[0].Length; j++)
+                {
+                    labyrinth[i][j] = _labyrinth[i][j];
+                }
+            }
             List<Vertice> verticeList = new List<Vertice>();
             for (int i = 1; i < labyrinth.Length - 1; i++)
             {

@@ -8,7 +8,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         public AStarEuclidean(Vertice[] vertices, int[][] distanceMatrix, LabyrinthVisualiser visualiser) : base(vertices, distanceMatrix, visualiser) { }        
         protected override double GetCriteria(Vertice current, Vertice finish)
         {
-            return current.MinDistance + Math.Sqrt(Math.Pow(current.X - finish.X, 2) + Math.Pow(current.Y - finish.Y, 2));
+            return current.MinDistance + 10*Math.Sqrt(Math.Pow(current.X - finish.X, 2) + Math.Pow(current.Y - finish.Y, 2));
         }
     }
 }
