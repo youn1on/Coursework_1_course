@@ -3,6 +3,10 @@
 
     public class FileContentProcessor
     {
+        /// <summary>
+        /// Turns string array of walls and free spaces into its numerical representation.
+        /// </summary>
+        /// <returns>Numerical representation of labyrinth, where 0 is free space and 1 is a wall.</returns>
         public static int[][] GetLabyrinthMatrix(string[] fileContent)
         {
             int[][] labyrinth = new int[fileContent.Length][];

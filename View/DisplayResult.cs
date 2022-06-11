@@ -15,20 +15,30 @@ namespace Labyrinths_AStar_Dijkstra.View
         }
         private int startX, startY, endX, endY;
         private bool IsValid = false;
-        public Vertice[] vertices;
-        public static int EndPointIndex;
+        public Vertice[] vertices; // Array of vertices, which is used by visualiser.
+        public static int EndPointIndex; // The index of endpoint vertice in array of vertices.
 
         private void OnLoad(object sender, EventArgs e)
         {
             Location = Style.FullFormsLocation;
         }
         
+        /// <summary>
+        /// Allows user to go to previous form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoBack(object sender, EventArgs e)
         {
             Program.ClosedByUser = false;
             this.Close();
         }
         
+        /// <summary>
+        /// Does visualisation of valid coordinates on the labyrinth.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private  void Check(object sender, EventArgs e)
         {
             if (!int.TryParse(this.coordinatesStartX.Text, out startX) || !int.TryParse(this.coordinatesStartY.Text, out startY) ||
@@ -55,6 +65,12 @@ namespace Labyrinths_AStar_Dijkstra.View
             }
             IsValid = false;
         }
+        
+        /// <summary>
+        /// Visualises route found by selected algorithm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Confirm(object sender, EventArgs e)
         {
             Check(sender, e);

@@ -7,11 +7,19 @@ namespace Labyrinths_AStar_Dijkstra.Model.Structures
         public int Count { get; protected set; }
         public Node<int> Head { get; set; }
 
+        /// <summary>
+        /// Data structure, in which the order of processing is determined by criteria.
+        /// </summary>
         public PriorityQueue()
         {
             Count = 0;
             Head = null;
         }
+        /// <summary>
+        /// returns first element of queue and deletes it.
+        /// </summary>
+        /// <returns>Value of head node.</returns>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public int Pop()
         {
             if (Head == null) throw new IndexOutOfRangeException();
@@ -20,6 +28,9 @@ namespace Labyrinths_AStar_Dijkstra.Model.Structures
             Count--;
             return headNode.Value;
         }
+        /// <summary>
+        /// Adds an element to a queue.
+        /// </summary>
         public void Push(int value, double criteria)
         {
             Node<int> newNode = new Node<int>(value, criteria);

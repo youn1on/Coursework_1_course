@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Labyrinths_AStar_Dijkstra.Model.Structures;
 
 namespace Labyrinths_AStar_Dijkstra.Model
 {
     public class LabyrinthProcessor
     {
+        /// <summary>
+        /// Determines all vertices and returns them.
+        /// </summary>
+        /// <returns>List of vertices in user's labyrinth.</returns>
         public static Vertice[] GetVerticeList(int[][] _labyrinth, int[][] dots)
         {
             int[][] labyrinth = new int[_labyrinth.Length][];
@@ -36,16 +39,19 @@ namespace Labyrinths_AStar_Dijkstra.Model
             for (int i = 0; i < vertices.Length; i++) vertices[i] = verticeList[i];
             return vertices;
         }
-
+        /// <summary>
+        /// Checks if cell shouldn't be a vertice.
+        /// </summary>
         private static bool IsTunnel(int[][] labyrinth, int i, int j)
         {
             return labyrinth[i][j - 1] == 1 && labyrinth[i][j + 1] == 1 && labyrinth[i - 1][j] != 1 &&
                 labyrinth[i + 1][j] != 1 || labyrinth[i][j - 1] != 1 && labyrinth[i][j + 1] != 1 &&
                 labyrinth[i - 1][j] == 1 && labyrinth[i + 1][j] == 1;
-            /*labyrinth[i][j - 1] == labyrinth[i][j + 1] && labyrinth[i - 1][j] == labyrinth[i + 1][j] &&
-                   (labyrinth[i][j + 1] != labyrinth[i - 1][j] || labyrinth[i][j + 1] == 1 && labyrinth[i - 1][j] == 1);*/
         }
 
+        /// <summary>
+        /// Forms distance matrix.
+        /// </summary>
         public static int[][] GetDistances(Vertice[] vertices, int[][] labyrinth)
         {
             int[][] distances = new int[vertices.Length][];
@@ -75,7 +81,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
 
             return distances;
         }
-
+        /// <summary>
+        /// Checks if vertices are adjacent.
+        /// </summary>
+        /// <returns>True if vertices are adjacent.</returns>
         private static bool IsAdjacent(Vertice vertice1, Vertice vertice2, int[][] labyrinth)
         {
             if ((vertice1.X == vertice2.X) == (vertice1.Y == vertice2.Y))
@@ -96,12 +105,19 @@ namespace Labyrinths_AStar_Dijkstra.Model
             return true;
         }
 
-        
+        /// <summary>
+        /// Calculates linear distance between two points.
+        /// </summary>
+        /// <returns>Returns distance between two points.</returns>
         private static int GetDistance(Vertice vertice1, Vertice vertice2)
         {
             return (int) Math.Sqrt(Math.Pow(vertice1.X - vertice2.X, 2) + Math.Pow(vertice1.Y - vertice2.Y, 2));
         }
 
+        /// <summary>
+        /// Finds indexes of startpoint and endpoint in a vertice array by coordinates.
+        /// </summary>
+        /// <returns>Indexes of startpoint and endpoint.</returns>
         public static int[] GetEntryPointIndexes(Vertice[] vertices, int[][] coordinates)
         {
             int found = 0;

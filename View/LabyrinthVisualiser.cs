@@ -12,7 +12,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         private Point _start, _finish;
         private readonly int _cellSize;
         private Randomizer form;
-        public List<(Vertice, Vertice)> passed;
+        public List<(Vertice, Vertice)> passed; // List of passed vertices and their predecessors.
         private readonly int[][] distances;
         private Vertice[] vertices;
 
@@ -35,6 +35,11 @@ namespace Labyrinths_AStar_Dijkstra.View
             form.Controls.Add(form.background);
         }
 
+        /// <summary>
+        /// Visualises labyrinth with all vertices, routes which were considered, startpoint and endpoint.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void DrawLabyrinth(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.White, _cellSize);
@@ -98,7 +103,14 @@ namespace Labyrinths_AStar_Dijkstra.View
             form.background.Refresh();
         }
 
-        public void DrawPathBetween(Vertice vertice1, Vertice vertice2, PaintEventArgs e, Color pathColor = default)
+        /// <summary>
+        /// Visualises line between vertices.
+        /// </summary>
+        /// <param name="vertice1"></param>
+        /// <param name="vertice2"></param>
+        /// <param name="e"></param>
+        /// <param name="pathColor"></param>
+        private void DrawPathBetween(Vertice vertice1, Vertice vertice2, PaintEventArgs e, Color pathColor = default)
         {
             Pen pen = new Pen(pathColor==default?Color.CornflowerBlue:pathColor, _cellSize);
             (int x1, int y1, int x2, int y2) = (vertice1.Y*_cellSize, vertice1.X*_cellSize, vertice2.Y*_cellSize, vertice2.X*_cellSize);
@@ -121,7 +133,13 @@ namespace Labyrinths_AStar_Dijkstra.View
             e.Graphics.DrawLine(pen, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize+_cellSize);
         }
 
-        public void DrawRoute(Vertice[] vertices, int finIndex,  PaintEventArgs e)
+        /// <summary>
+        /// Draws route from startpoint to endpoint if it exists.
+        /// </summary>
+        /// <param name="vertices"></param>
+        /// <param name="finIndex"></param>
+        /// <param name="e"></param>
+        private void DrawRoute(Vertice[] vertices, int finIndex,  PaintEventArgs e)
         {
             Vertice current = vertices[finIndex];
             DrawPathBetween(current, current, e, Color.Red);

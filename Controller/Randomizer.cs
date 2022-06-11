@@ -8,6 +8,9 @@ namespace Labyrinths_AStar_Dijkstra.Controller
 {
     public partial class Randomizer : Form
     {
+        /// <summary>
+        /// Allows user to randomly generate labyrinth of given dimensions.
+        /// </summary>
         public Randomizer()
         {
             InitializeComponent();
@@ -16,11 +19,13 @@ namespace Labyrinths_AStar_Dijkstra.Controller
 
         public Label background;
 
-        public void OnLoad(object sender, EventArgs e)
+        private void OnLoad(object sender, EventArgs e)
         {
             this.Location = Style.RandomizerFormLocation;
         }
-        
+        /// <summary>
+        /// Creates labyrinths if inputs are valid.
+        /// </summary>
         private void Randomize(object sender, EventArgs e)
         {
             string pattern = @"^[3-9]$|^\d\d$";
@@ -39,12 +44,18 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.labyrinthVisualiser = new LabyrinthVisualiser(this);
             Refresh();
         }
-
+        /// <summary>
+        /// Returns user to the previous form
+        /// </summary>
         private void GoBack(object sender, EventArgs e)
         {
             Program.ClosedByUser = false;
             this.Close();
         }
+        
+        /// <summary>
+        /// Sends user to the next form, if labyrinth is created
+        /// </summary>
         private void Confirm(object sender, EventArgs e)
         {
             if (Program.labyrinth == null) MessageBox.Show("Please randomize labyrinth first");

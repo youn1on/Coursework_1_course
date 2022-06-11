@@ -1,4 +1,6 @@
-﻿using Labyrinths_AStar_Dijkstra.View;
+﻿using System.Drawing;
+using System.Windows.Forms;
+using Labyrinths_AStar_Dijkstra.View;
 
 namespace Labyrinths_AStar_Dijkstra.Controller
 {
@@ -76,7 +78,6 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.confirmButton.Size = new System.Drawing.Size(233, 55);
       this.confirmButton.TabIndex = 3;
       this.confirmButton.Text = "Confirm✓";
-      //this.button1.UseVisualStyleBackColor = true;
       this.confirmButton.Click += new System.EventHandler(this.Confirm);
       this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
@@ -88,7 +89,6 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.selectButton.Size = new System.Drawing.Size(152, 38);
       this.selectButton.TabIndex = 4;
       this.selectButton.Text = "Select manually";
-      this.selectButton.UseVisualStyleBackColor = true;
       this.selectButton.Click += new System.EventHandler(this.Select);
       this.selectButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
@@ -100,7 +100,6 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.randomizerButton.Size = new System.Drawing.Size(233, 55);
       this.randomizerButton.TabIndex = 5;
       this.randomizerButton.Text = "Randomize";
-      this.randomizerButton.UseVisualStyleBackColor = true;
       this.randomizerButton.Click += new System.EventHandler(this.Randomize);
       this.randomizerButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 

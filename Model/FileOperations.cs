@@ -3,8 +3,12 @@ using System.Text.RegularExpressions;
 
 namespace Labyrinths_AStar_Dijkstra.Model
 {
-    public class FileOperations
+    public static class FileOperations
     {
+        /// <summary>
+        /// Gets all lines of file and validates it.
+        /// </summary>
+        /// <returns>Content of given file</returns>
         public static string[] GetFileContent(string filename)
         {
             string[] lines = File.ReadAllLines(filename);
@@ -13,6 +17,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
             return null;
         }
 
+        /// <summary>
+        /// Checks if filecontent matches the pattern of labyrinth.
+        /// </summary>
+        /// <returns>True if filecontent is valid</returns>
         public static bool ValidateFile(ref string[] content)
         {
             int length = content[0].Trim().Length;

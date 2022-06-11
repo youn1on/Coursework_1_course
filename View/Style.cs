@@ -4,6 +4,9 @@ namespace Labyrinths_AStar_Dijkstra.View
 {
     public static class Style
     {
+        /// <summary>
+        /// Saves styles needed for objects of several classes
+        /// </summary>
         public static Color ConfirmButtonColor = Color.LightGreen;
 
         public static Point RandomizeLocation = new Point(170, 162);

@@ -8,16 +8,21 @@ namespace Labyrinths_AStar_Dijkstra.Controller
 {
     public partial class InitialForm : Form
     {
+        /// <summary>
+        /// Is used to select existing labyrinth or choose Randomize option
+        /// </summary>
         public InitialForm()
         {
             InitializeComponent();
             Load += OnLoad;
         }
-        
         private void OnLoad(object sender, EventArgs e)
         {
             Location = Style.SmallFormLocation;
         }
+        /// <summary>
+        /// Method that validates input and sends user to the next form.
+        /// </summary>
         private void Confirm(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(this.pathToFile.Text.Trim())) MessageBox.Show($"The program doesn`t accept empty path!");
@@ -49,6 +54,9 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             }
         }
 
+        /// <summary>
+        /// Method, which allows to choose file from file system.
+        /// </summary>
         private void Select(object sender, EventArgs e)
         {
             using OpenFileDialog dialog = new OpenFileDialog();
@@ -64,6 +72,9 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             }
         }
 
+        /// <summary>
+        /// Method which sends user to randomizer form.
+        /// </summary>
         private void Randomize(object sender, EventArgs e)
         {
             this.Hide();

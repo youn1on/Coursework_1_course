@@ -8,19 +8,25 @@ namespace Labyrinths_AStar_Dijkstra.Model
 {
     public class DijkstrasAlgorithm
     {
+        /// <summary>
+        /// Dijkstra's algorithm which finds shortest route between two points.
+        /// </summary>
         protected readonly Vertice[] Vertices;
         protected readonly int[][] DistanceMatrix;
         protected LabyrinthVisualiser Visualiser;
-        public bool animated = false;
+        public bool animated = false; //Selects animated or not visualisation.
         public DijkstrasAlgorithm(Vertice[] vertices, int[][] distanceMatrix, LabyrinthVisualiser visualiser)
         {
             Vertices = vertices;
             DistanceMatrix = distanceMatrix;
             Visualiser = visualiser;
         }
+        
+        /// <summary>
+        /// Main logic of Djikstra's algorithm to find path between two points.
+        /// </summary>
         public bool FindRoute(int startPointIndex, int endPointIndex)
         {
-            //MessageBox.Show("");
             PriorityQueue queue = new PriorityQueue();
             Vertices[startPointIndex].MinDistance = 0;
             queue.Push(startPointIndex, 0);
@@ -58,6 +64,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
             return false;
         }
 
+        /// <summary>
+        /// Method (overriden in child classes), which determines the order of passing vertices.
+        /// </summary>
+        /// <returns>Current minimal distance from startpoint to vertice</returns>
         protected virtual double GetCriteria(Vertice current, Vertice finish)
         {
             return current.MinDistance;

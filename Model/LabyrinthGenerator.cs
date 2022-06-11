@@ -5,6 +5,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
 {
     public class LabyrinthGenerator
     {
+        /// <summary>
+        /// Creates a labyrinth, which all consist of blocks.
+        /// </summary>
+        /// <returns>Numerical version of a labyrinth, where every cell is a wall.</returns>
         public static int[][] GetEmptyLabyrinth(int sizeX, int sizeY)
         {
             int[][] labyrinth = new int[sizeX][];
@@ -19,13 +23,16 @@ namespace Labyrinths_AStar_Dijkstra.Model
 
             return labyrinth;
         }
-
+        /// <summary>
+        /// Randomly generates matrix, which can be converted into labyrinth.
+        /// </summary>
+        /// <returns>Generated labyrinth in its numerical version.</returns>
         public static int[][] GenerateLabyrinth(int sizeX, int sizeY)
         {
             int[][] labyrinth = GetEmptyLabyrinth(sizeX, sizeY);
             Random rand = new Random();
-            Stack<System.Collections.Generic.KeyValuePair<int, int>> stack =
-                new Stack<System.Collections.Generic.KeyValuePair<int, int>>();
+            Stack<KeyValuePair<int, int>> stack =
+                new Stack<KeyValuePair<int, int>>();
             int i = rand.Next((labyrinth.Length - 1) / 2) * 2 + 1;
             int j = rand.Next((labyrinth[0].Length - 1) / 2) * 2 + 1;
             labyrinth[i][j] = 0;
@@ -45,6 +52,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
             return labyrinth;
         }
 
+        /// <summary>
+        /// Generates labyrinth with one or several impassable paths.
+        /// </summary>
+        /// <returns>Labyrinth with dead ends.</returns>
         public static int[][] GenerateDeadEndLabyrinth(int sizeX, int sizeY)
         {
             Random rand = new Random();

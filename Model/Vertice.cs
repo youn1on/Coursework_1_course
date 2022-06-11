@@ -11,6 +11,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
         public bool Passed = false;
         public int Previous;
 
+        /// <summary>
+        /// Key points of optimized labyrinth, which we consider when finding a route.
+        /// </summary>
+        /// <remarks>Can be corners, crossings or entry points.</remarks>
         public Vertice(int x, int y)
         {
             X = x;
