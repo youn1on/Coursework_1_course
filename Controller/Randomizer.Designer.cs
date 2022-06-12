@@ -40,7 +40,6 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.deadEndCheckBox = new System.Windows.Forms.CheckBox();
             this.yDimension = new System.Windows.Forms.TextBox();
             this.multiplyLabel = new System.Windows.Forms.Label();
-            this.box = new GroupBox();
             this.confirmButton = new Button();
             this.SuspendLayout();
             // 
@@ -150,7 +149,6 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         }
 
         private LabyrinthVisualiser labyrinthVisualiser;
-        private GroupBox box;
 
         private System.Windows.Forms.TextBox yDimension;
         private System.Windows.Forms.Label multiplyLabel;

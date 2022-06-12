@@ -29,7 +29,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         private void Randomize(object sender, EventArgs e)
         {
             string pattern = @"^[3-9]$|^\d{2}$";
-            if (!Regex.IsMatch(xDimension.Text, pattern) || !Regex.IsMatch(yDimension.Text, pattern)) // if one of dimensions is less than 3 or bigger than 99:
+            if (!Regex.IsMatch(xDimension.Text.Trim(), pattern) || !Regex.IsMatch(yDimension.Text.Trim(), pattern)) // if one of dimensions is less than 3 or bigger than 99:
             {
                 MessageBox.Show("Incorrect dimensions. Enter dimensions in range 3-99.");
                 return;

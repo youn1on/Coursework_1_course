@@ -5,6 +5,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
 {
     public class LabyrinthProcessor
     {
+        private static int[][] labyrinth;
         /// <summary>
         /// Determines all vertices and returns them.
         /// </summary>
@@ -12,7 +13,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         public static Vertice[] GetVerticeList(int[][] _labyrinth, int[][] dots)
         {
             // Creating a copy of given labyrinth.
-            int[][] labyrinth = new int[_labyrinth.Length][];
+            labyrinth = new int[_labyrinth.Length][];
             for (int i = 0; i < _labyrinth.Length; i++)
             {
                 labyrinth[i] = new int[_labyrinth[0].Length];
@@ -52,7 +53,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         /// <summary>
         /// Forms distance matrix.
         /// </summary>
-        public static int[][] GetDistances(Vertice[] vertices, int[][] labyrinth)
+        public static int[][] GetDistances(Vertice[] vertices)
         {
             int[][] distances = new int[vertices.Length][];
             for (int i = 0; i < vertices.Length; i++)

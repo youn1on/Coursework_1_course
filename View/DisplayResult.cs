@@ -42,8 +42,8 @@ namespace Labyrinths_AStar_Dijkstra.View
             {
                 MessageBox.Show("Incorrect input! Please, enter numerical coordinates!");
             }
-            else if (startX < 0 || endX < 0 || startY < 0 || endY < 0 || startX > Program.labyrinth[0].Length ||
-                endX>Program.labyrinth[0].Length||startY>Program.labyrinth.Length||endY>Program.labyrinth.Length)
+            else if (startX < 0 || endX < 0 || startY < 0 || endY < 0 || startX >= Program.labyrinth[0].Length ||
+                endX>=Program.labyrinth[0].Length||startY>=Program.labyrinth.Length||endY>=Program.labyrinth.Length)
             {
                 MessageBox.Show("At least one of coordinates is out of labyrinth range!");
             }
@@ -76,7 +76,7 @@ namespace Labyrinths_AStar_Dijkstra.View
 
             vertices = LabyrinthProcessor.GetVerticeList(Program.labyrinth,
                 new[] {new[] {startY, startX}, new[] {endY, endX}});
-            int[][] distances = LabyrinthProcessor.GetDistances(vertices, Program.labyrinth);
+            int[][] distances = LabyrinthProcessor.GetDistances(vertices);
             DijkstrasAlgorithm algo;
             // The algorithm type depends on which radiobutton is checked.
             if (dijkstraRadioButton.Checked) algo = new DijkstrasAlgorithm(vertices, distances, labyrinthVisualiser);

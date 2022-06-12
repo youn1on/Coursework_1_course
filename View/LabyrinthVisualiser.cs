@@ -30,7 +30,7 @@ namespace Labyrinths_AStar_Dijkstra.View
                 : Style.VisualizedLabyrinthSize.Width / Program.labyrinth[0].Length;
             
             vertices = LabyrinthProcessor.GetVerticeList(Program.labyrinth, _start == default? new[] {new[] {1, 1}, new[] {1, 1}}:new[] {new[]{_start.X, _start.Y}, new[]{_finish.X, _finish.Y}});
-            distances = LabyrinthProcessor.GetDistances(vertices, Program.labyrinth);
+            distances = LabyrinthProcessor.GetDistances(vertices);
             
             form.background = new Label();
             form.background.BackColor = Color.Black;
@@ -57,19 +57,26 @@ namespace Labyrinths_AStar_Dijkstra.View
                     if (distances[i][j] < Int32.MaxValue / 2) // If vertices i and j is adjacent:
                     {
                         //Getting the coordinate of a cell corner on the label.
-                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize, vertices[i].X * _cellSize,
-                                                            vertices[j].Y * _cellSize, vertices[j].X * _cellSize);
+                        /*(int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize, vertices[i].X * _cellSize,
+                                                            vertices[j].Y * _cellSize, vertices[j].X * _cellSize);*/
+                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize + _cellSize / 2,
+                            vertices[i].X * _cellSize + _cellSize / 2,
+                            vertices[j].Y * _cellSize + _cellSize / 2, vertices[j].X * _cellSize + _cellSize / 2);
                         if (x1 == x2)
                         {
-                            x1 += _cellSize / 2;
+                            /*x1 += _cellSize / 2;
                             x2 += _cellSize / 2;
-                            y2 += _cellSize;
+                            y2 += _cellSize;*/
+                            y1 -= _cellSize / 2;
+                            y2 += _cellSize / 2;
                         }
                         else
                         {
-                            y1 += _cellSize / 2;
+                            /*y1 += _cellSize / 2;
                             y2 += _cellSize / 2;
-                            x2 += _cellSize;
+                            x2 += _cellSize;*/
+                            x1 -= _cellSize / 2;
+                            x2 += _cellSize / 2;
                         }
 
                         e.Graphics.DrawLine(pen, x1, y1, x2, y2);
