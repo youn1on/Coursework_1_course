@@ -29,36 +29,38 @@ namespace Labyrinths_AStar_Dijkstra.Model
         {
             PriorityQueue queue = new PriorityQueue();
             Vertices[startPointIndex].MinDistance = 0;
-            queue.Push(startPointIndex, 0);
+            queue.Push(startPointIndex, 0); // Pushing star point index to queue.
             
             while (queue.Count > 0)
             {
                 int currentVertice = queue.Pop();
-                if (currentVertice == endPointIndex)
+                if (currentVertice == endPointIndex) // Endpoint is reached.
                 {
                     MessageBox.Show($"{Visualiser.passed.Count}");
                     return true;
                 }
                 for (int i = 0; i<Vertices.Length; i++)
                 {
-                    if (DistanceMatrix[currentVertice][i]==Int32.MaxValue/2) continue;
+                    if (DistanceMatrix[currentVertice][i]==Int32.MaxValue/2) continue; // Searching for adjacent vertices.
                     if (Vertices[i].MinDistance >
-                        Vertices[currentVertice].MinDistance + DistanceMatrix[currentVertice][i])
-                    {
+                        Vertices[currentVertice].MinDistance + DistanceMatrix[currentVertice][i]) // If new distance is lower than current:
+                    { // Rewrite distance and predecessor.
                         Vertices[i].MinDistance =
                             Vertices[currentVertice].MinDistance + DistanceMatrix[currentVertice][i];
                         Vertices[i].Previous = currentVertice;
                     }
 
-                    if (!Vertices[i].Passed)
+                    if (!Vertices[i].Passed) // Pushing all unpassed adjacent vertices to the queue.
                     {   
                         queue.Push(i, GetCriteria(Vertices[i], Vertices[endPointIndex]));
                     }
                 }
 
                 Vertices[currentVertice].Passed = true;
-                if (Vertices[currentVertice].Previous != -1) Visualiser.passed.Add((Vertices[Vertices[currentVertice].Previous], Vertices[currentVertice]));
+                if (Vertices[currentVertice].Previous != -1) Visualiser.passed.Add((Vertices[Vertices[currentVertice].Previous],
+                    Vertices[currentVertice])); // Adding vertice and its previous vertice to visualiser.
                 if (animated) Visualiser.Refresh();
+                // Delay in animation for small labyrinths.
                 if (Vertices.Length<1000 && animated) System.Threading.Thread.Sleep(3000/Vertices.Length);
             }
             return false;
@@ -70,7 +72,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         /// <returns>Current minimal distance from startpoint to vertice</returns>
         protected virtual double GetCriteria(Vertice current, Vertice finish)
         {
-            return current.MinDistance;
+            return current.MinDistance; // In Dijkstra the order of processing depends on distances only.
         }
     }
 }

@@ -11,15 +11,17 @@ namespace Labyrinths_AStar_Dijkstra.Model
         /// <returns>List of vertices in user's labyrinth.</returns>
         public static Vertice[] GetVerticeList(int[][] _labyrinth, int[][] dots)
         {
+            // Creating a copy of given labyrinth.
             int[][] labyrinth = new int[_labyrinth.Length][];
             for (int i = 0; i < _labyrinth.Length; i++)
             {
                 labyrinth[i] = new int[_labyrinth[0].Length];
                 for (int j = 0; j < _labyrinth[0].Length; j++)
                 {
-                    labyrinth[i][j] = _labyrinth[i][j];
+                    labyrinth[i][j] = _labyrinth[i][j]; 
                 }
             }
+            
             List<Vertice> verticeList = new List<Vertice>();
             for (int i = 1; i < labyrinth.Length - 1; i++)
             {
@@ -27,17 +29,15 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 {
                     if (labyrinth[i][j] != 1 && (!IsTunnel(labyrinth, i, j) ||
                                                  i == dots[0][0] && j == dots[0][1] ||
-                                                 i == dots[1][0] && j == dots[1][1]))
+                                                 i == dots[1][0] && j == dots[1][1])) // Checking if this point is a corner, crossing or entrypoint.
                     {
                         verticeList.Add(new Vertice(i, j));
                         labyrinth[i][j] = 2;
                     }
                 }
             }
-
-            Vertice[] vertices = new Vertice[verticeList.Count];
-            for (int i = 0; i < vertices.Length; i++) vertices[i] = verticeList[i];
-            return vertices;
+            
+            return verticeList.ToArray();;
         }
         /// <summary>
         /// Checks if cell shouldn't be a vertice.
@@ -62,20 +62,9 @@ namespace Labyrinths_AStar_Dijkstra.Model
             {
                 for (int j = i; j < vertices.Length; j++)
                 {
-                    distances[i][j] = Int32.MaxValue/2;
-                    distances[j][i] = Int32.MaxValue/2;
-                }
-            }
-            
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                
-                for (int j = i + 1; j < vertices.Length; j++)
-                {
-                    if (IsAdjacent(vertices[i], vertices[j], labyrinth))
-                    {
-                        distances[i][j] = distances[j][i] = GetDistance(vertices[i], vertices[j]);
-                    }
+                    distances[i][j] = distances[j][i] = IsAdjacent(vertices[i], vertices[j], labyrinth)
+                        ? GetDistance(vertices[i], vertices[j])
+                        : Int32.MaxValue / 2;
                 }
             }
 

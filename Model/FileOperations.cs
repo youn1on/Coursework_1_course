@@ -24,7 +24,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
         public static bool ValidateFile(ref string[] content)
         {
             int length = content[0].Trim().Length;
-            Regex regex = new Regex(@"^[X ]+$");
+            Regex regex = new Regex(@"^[X ]+$"); //File should consist of "X" and empty spaces only
             for (int i = 0; i < content.Length; i++)
             {
                 content[i] = content[i].Trim();
@@ -34,7 +34,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 }
             }
 
-            regex = new Regex(@"^(?:X )+X$");
+            regex = new Regex(@"^(?:X )+X$");// First and last lines contain walls only.
             if (regex.IsMatch(content[0]) && regex.IsMatch(content[content.Length-1])) return true;
             return false;
         }

@@ -15,6 +15,8 @@ namespace Labyrinths_AStar_Dijkstra.Model
         /// <returns>A number that determines position of a vertice in priority queue calculated via euclidean heuristic.</returns>
         protected override double GetCriteria(Vertice current, Vertice finish)
         {
+            // In A* processing order depends on distances between start point and current points and distances to endpoint.
+            // Euclidean heuristic calculates distances to endpoint as distance in a straight line.
             return current.MinDistance + 10*Math.Sqrt(Math.Pow(current.X - finish.X, 2) + Math.Pow(current.Y - finish.Y, 2));
         }
     }

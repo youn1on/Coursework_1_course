@@ -29,21 +29,21 @@ namespace Labyrinths_AStar_Dijkstra.Model
         /// <returns>Generated labyrinth in its numerical version.</returns>
         public static int[][] GenerateLabyrinth(int sizeX, int sizeY)
         {
-            int[][] labyrinth = GetEmptyLabyrinth(sizeX, sizeY);
+            int[][] labyrinth = GetEmptyLabyrinth(sizeX, sizeY); // Generating a labyrinth of walls with given dimensions.
             Random rand = new Random();
             Stack<KeyValuePair<int, int>> stack =
                 new Stack<KeyValuePair<int, int>>();
-            int i = rand.Next((labyrinth.Length - 1) / 2) * 2 + 1;
+            int i = rand.Next((labyrinth.Length - 1) / 2) * 2 + 1; // Randomizing indexes of a cell to start generating labyrinth with.
             int j = rand.Next((labyrinth[0].Length - 1) / 2) * 2 + 1;
             labyrinth[i][j] = 0;
             stack.Push(new(i, j));
             while (stack.Count > 0)
             {
-                (i, j) = stack.Pop();
+                (i, j) = stack.Pop(); // Processing cells.
                 KeyValuePair<int, int> newPoint = FindNeighbour(labyrinth, i, j);
                 if (newPoint.Key != -1)
                 {
-                    stack.Push(new(i, j));
+                    stack.Push(new(i, j)); // Adding cells to the stack.
                     labyrinth[newPoint.Key][newPoint.Value] = 0;
                     labyrinth[(newPoint.Key + i) / 2][(newPoint.Value + j) / 2] = 0;
                     stack.Push(newPoint);
@@ -71,6 +71,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
             return labyrinth;
         }
 
+        /// <summary>
+        /// Choosing coordinates in a random place to build a wall.
+        /// </summary>
+        /// <returns> Coordinates of a place reserved for a wall.</returns>
         private static (int, int) GetRandomTunnel(int[][] labyrinth)
         {
             Random rand = new();
@@ -84,6 +88,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
             }
         }
 
+        /// <summary>
+        /// Finds random neighbour of a cell.
+        /// </summary>
+        /// <returns>Random neighbour, which we don't have connections with.</returns>
         private static KeyValuePair<int, int> FindNeighbour(int[][] labyrinth, int i, int j)
         {
             List<KeyValuePair<int, int>> neighbours = new List<KeyValuePair<int, int>>();

@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using System;
-using System.Drawing;
 using Labyrinths_AStar_Dijkstra.Model;
 using Labyrinths_AStar_Dijkstra.Controller;
 
@@ -13,8 +12,8 @@ namespace Labyrinths_AStar_Dijkstra.View
             InitializeComponent();
             Load += OnLoad;
         }
-        private int startX, startY, endX, endY;
-        private bool IsValid = false;
+        private int startX, startY, endX, endY; // Coordinates of startpoint and endpoint.
+        private bool IsValid = false; // Flag that indicates if inputted coordinates are valid.
         public Vertice[] vertices; // Array of vertices, which is used by visualiser.
         public static int EndPointIndex; // The index of endpoint vertice in array of vertices.
 
@@ -26,19 +25,16 @@ namespace Labyrinths_AStar_Dijkstra.View
         /// <summary>
         /// Allows user to go to previous form.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void GoBack(object sender, EventArgs e)
         {
-            Program.ClosedByUser = false;
+            // Indicates that the window is closed by the program, not by user, so we shouldn't close the entire program.
+            Program.ClosedByUser = false; // Close this form and return to previous.
             this.Close();
         }
         
         /// <summary>
         /// Does visualisation of valid coordinates on the labyrinth.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private  void Check(object sender, EventArgs e)
         {
             if (!int.TryParse(this.coordinatesStartX.Text, out startX) || !int.TryParse(this.coordinatesStartY.Text, out startY) ||
@@ -57,9 +53,9 @@ namespace Labyrinths_AStar_Dijkstra.View
             }
             else
             {
-                this.Controls.Remove(this.background);
+                this.Controls.Remove(this.background); // To repaint a labyrinth we should delete old one.
                 IsValid = true;
-                this.labyrinthVisualiser =
+                this.labyrinthVisualiser = // Painting new labyrinth.
                     new LabyrinthVisualiser(this, new(startY, startX), new(endY, endX));
                 return;
             }
@@ -69,12 +65,10 @@ namespace Labyrinths_AStar_Dijkstra.View
         /// <summary>
         /// Visualises route found by selected algorithm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Confirm(object sender, EventArgs e)
         {
             Check(sender, e);
-            if (!IsValid)
+            if (!IsValid) // If at least one problem is detected:
             {
                 MessageBox.Show("Please, enter valid coordinates!");
                 return;
@@ -84,10 +78,12 @@ namespace Labyrinths_AStar_Dijkstra.View
                 new[] {new[] {startY, startX}, new[] {endY, endX}});
             int[][] distances = LabyrinthProcessor.GetDistances(vertices, Program.labyrinth);
             DijkstrasAlgorithm algo;
+            // The algorithm type depends on which radiobutton is checked.
             if (dijkstraRadioButton.Checked) algo = new DijkstrasAlgorithm(vertices, distances, labyrinthVisualiser);
             else if (euclideanRadioButton.Checked) algo = new AStarEuclidean(vertices, distances, labyrinthVisualiser);
             else algo = new AStarManhattan(vertices, distances, labyrinthVisualiser);
-            int[]entryPoints =
+            
+            int[] entryPoints =
                 LabyrinthProcessor.GetEntryPointIndexes(vertices, new[] {new[] {startY, startX}, new[] {endY, endX}});
             EndPointIndex = entryPoints[1];
             algo.animated = !quickSearch.Checked;

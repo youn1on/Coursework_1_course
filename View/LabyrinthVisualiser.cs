@@ -9,13 +9,16 @@ namespace Labyrinths_AStar_Dijkstra.View
 {
     public class LabyrinthVisualiser
     {
-        private Point _start, _finish;
-        private readonly int _cellSize;
-        private Randomizer form;
+        private Point _start, _finish; // Coordinates of start point and endpoint.
+        private readonly int _cellSize; // Optimal size of cell to display on a screen.
+        private Randomizer form; // The form on which the labyrinth needs to be displayed.
         public List<(Vertice, Vertice)> passed; // List of passed vertices and their predecessors.
         private readonly int[][] distances;
         private Vertice[] vertices;
 
+        /// <summary>
+        /// Visualises labyrinth on a given form.
+        /// </summary>
         public LabyrinthVisualiser(Randomizer _form, Point start = default, Point finish = default)
         {
             passed = new List<(Vertice, Vertice)>();
@@ -38,9 +41,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         /// <summary>
         /// Visualises labyrinth with all vertices, routes which were considered, startpoint and endpoint.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void DrawLabyrinth(object sender, PaintEventArgs e)
+        private void DrawLabyrinth(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.White, _cellSize);
             Label This = (Label) sender;
@@ -48,24 +49,27 @@ namespace Labyrinths_AStar_Dijkstra.View
             This.Location = new Point(
                 Style.LabyrinthLocation.X + (Style.VisualizedLabyrinthSize.Width - form.background.Size.Width) / 2,
                 Style.LabyrinthLocation.Y + (Style.VisualizedLabyrinthSize.Height - form.background.Size.Height) / 2);
+            
             for (int i = 0; i < distances.Length; i++)
             {
                 for (int j = i + 1; j < distances.Length; j++)
                 {
-                    if (distances[i][j] < Int32.MaxValue / 2)
+                    if (distances[i][j] < Int32.MaxValue / 2) // If vertices i and j is adjacent:
                     {
-                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize + _cellSize / 2,
-                            vertices[i].X * _cellSize + _cellSize / 2,
-                            vertices[j].Y * _cellSize + _cellSize / 2, vertices[j].X * _cellSize + _cellSize / 2);
+                        //Getting the coordinate of a cell corner on the label.
+                        (int x1, int y1, int x2, int y2) = (vertices[i].Y * _cellSize, vertices[i].X * _cellSize,
+                                                            vertices[j].Y * _cellSize, vertices[j].X * _cellSize);
                         if (x1 == x2)
                         {
-                            y1 -= _cellSize / 2;
-                            y2 += _cellSize / 2;
+                            x1 += _cellSize / 2;
+                            x2 += _cellSize / 2;
+                            y2 += _cellSize;
                         }
                         else
                         {
-                            x1 -= _cellSize / 2;
-                            x2 += _cellSize / 2;
+                            y1 += _cellSize / 2;
+                            y2 += _cellSize / 2;
+                            x2 += _cellSize;
                         }
 
                         e.Graphics.DrawLine(pen, x1, y1, x2, y2);
@@ -73,31 +77,34 @@ namespace Labyrinths_AStar_Dijkstra.View
                 }
             }
 
-            foreach (Vertice vertice in vertices)
+            foreach (Vertice vertice in vertices) //Displaying vertices.
             {
                 pen.Color = Color.LightBlue;
                 e.Graphics.DrawLine(pen, vertice.Y*_cellSize+_cellSize/2, vertice.X*_cellSize, vertice.Y*_cellSize+_cellSize/2, vertice.X*_cellSize+_cellSize);
             }
 
-            if (_start != default)
+            if (_start != default) //Displaying startpoint and endpoint.
             {
                 pen.Color = Color.Crimson;
                 e.Graphics.DrawLine(pen, _start.Y*_cellSize+_cellSize/2, _start.X*_cellSize, _start.Y*_cellSize+_cellSize/2, _start.X*_cellSize+_cellSize);
                 e.Graphics.DrawLine(pen, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize, _finish.Y*_cellSize+_cellSize/2, _finish.X*_cellSize+_cellSize);
             }
 
-            foreach ((Vertice, Vertice) verticePair in passed)
+            foreach ((Vertice, Vertice) verticePair in passed) //Displaying considered cells.
             {
                 DrawPathBetween(verticePair.Item1, verticePair.Item2, e);
             }
 
-            if (passed.Count > 0)
+            if (passed.Count > 0) // Do not execute before startpoint and endpoint is given.
             {
                 var _form = (DisplayResult) form;
                 DrawRoute(_form.vertices, DisplayResult.EndPointIndex, e);
             }
         }
 
+        /// <summary>
+        /// Refreshing label.
+        /// </summary>
         public void Refresh()
         {
             form.background.Refresh();
@@ -106,10 +113,6 @@ namespace Labyrinths_AStar_Dijkstra.View
         /// <summary>
         /// Visualises line between vertices.
         /// </summary>
-        /// <param name="vertice1"></param>
-        /// <param name="vertice2"></param>
-        /// <param name="e"></param>
-        /// <param name="pathColor"></param>
         private void DrawPathBetween(Vertice vertice1, Vertice vertice2, PaintEventArgs e, Color pathColor = default)
         {
             Pen pen = new Pen(pathColor==default?Color.CornflowerBlue:pathColor, _cellSize);
@@ -130,15 +133,14 @@ namespace Labyrinths_AStar_Dijkstra.View
             }
             e.Graphics.DrawLine(pen, x1, y1, x2, y2);
             pen.Color = pathColor==default?Color.RoyalBlue:pathColor;
-            e.Graphics.DrawLine(pen, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize+_cellSize);
+            //Drawing path between two vertices.
+            e.Graphics.DrawLine(pen, vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize, 
+                vertice2.Y*_cellSize+_cellSize/2, vertice2.X*_cellSize+_cellSize);
         }
 
         /// <summary>
         /// Draws route from startpoint to endpoint if it exists.
         /// </summary>
-        /// <param name="vertices"></param>
-        /// <param name="finIndex"></param>
-        /// <param name="e"></param>
         private void DrawRoute(Vertice[] vertices, int finIndex,  PaintEventArgs e)
         {
             Vertice current = vertices[finIndex];

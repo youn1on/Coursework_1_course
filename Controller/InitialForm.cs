@@ -9,7 +9,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
     public partial class InitialForm : Form
     {
         /// <summary>
-        /// Is used to select existing labyrinth or choose Randomize option
+        /// Is used to select existing labyrinth or choose Randomize option.
         /// </summary>
         public InitialForm()
         {
@@ -59,15 +59,14 @@ namespace Labyrinths_AStar_Dijkstra.Controller
         /// </summary>
         private void Select(object sender, EventArgs e)
         {
-            using OpenFileDialog dialog = new OpenFileDialog();
-            dialog.InitialDirectory = @"c:\Users\";
-            dialog.Filter = "txt files (*.txt)|*.txt";
+            using OpenFileDialog dialog = new OpenFileDialog(); // A system window for choosing a file.
+            dialog.Filter = "txt files (*.txt)|*.txt"; // Consider only .txt files.
             dialog.FilterIndex = 2;
             dialog.RestoreDirectory = true;
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                //Get the path of specified file
+                //Get the path of specified file.
                 this.pathToFile.Text = dialog.FileName;
             }
         }
