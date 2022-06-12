@@ -36,7 +36,10 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 int currentVertice = queue.Pop();
                 if (currentVertice == endPointIndex) // Endpoint is reached.
                 {
-                    MessageBox.Show($"Amount of vertices considered: {Visualiser.passed.Count+1} \nPath length: {Vertices[endPointIndex].MinDistance}");
+                    MessageBox.Show($"Amount of vertices considered: {Visualiser.passed.Count + 1}\n" +
+                                    (Vertices[endPointIndex].MinDistance < Int32.MaxValue
+                                        ? $"Path length: {Vertices[endPointIndex].MinDistance}"
+                                        : "Path is not found"));
                     return true;
                 }
                 for (int i = 0; i<Vertices.Length; i++)
