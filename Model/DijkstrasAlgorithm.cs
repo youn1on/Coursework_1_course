@@ -36,12 +36,18 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 int currentVertice = queue.Pop();
                 if (currentVertice == endPointIndex) // Endpoint is reached.
                 {
+                    Visualiser.IsFoundPath = true;
+                    Visualiser.Refresh();
                     MessageBox.Show($"Amount of vertices considered: {Visualiser.passed.Count + 1}\n" +
                                     (Vertices[endPointIndex].MinDistance < Int32.MaxValue
                                         ? $"Path length: {Vertices[endPointIndex].MinDistance}"
                                         : "Path is not found"));
                     return true;
                 }
+                
+                if (Vertices[currentVertice].Previous != -1) Visualiser.passed.Add((Vertices[Vertices[currentVertice].Previous],
+                    Vertices[currentVertice])); // Adding vertice and its previous vertice to visualiser.
+                
                 for (int i = 0; i<Vertices.Length; i++)
                 {
                     if (DistanceMatrix[currentVertice][i]==Int32.MaxValue/2) continue; // Searching for adjacent vertices.
@@ -60,8 +66,6 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 }
 
                 Vertices[currentVertice].Passed = true;
-                if (Vertices[currentVertice].Previous != -1) Visualiser.passed.Add((Vertices[Vertices[currentVertice].Previous],
-                    Vertices[currentVertice])); // Adding vertice and its previous vertice to visualiser.
                 if (animated) Visualiser.Refresh();
                 // Delay in animation for small labyrinths.
                 if (Vertices.Length<1000 && animated) System.Threading.Thread.Sleep(3000/Vertices.Length);

@@ -15,6 +15,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         public List<(Vertice, Vertice)> passed; // List of passed vertices and their predecessors.
         private readonly int[][] distances;
         private Vertice[] vertices;
+        public bool IsFoundPath;
 
         /// <summary>
         /// Visualises labyrinth on a given form.
@@ -102,7 +103,7 @@ namespace Labyrinths_AStar_Dijkstra.View
                 DrawPathBetween(verticePair.Item1, verticePair.Item2, e);
             }
 
-            if (passed.Count > 0) // Do not execute before startpoint and endpoint is given.
+            if (IsFoundPath) // Do not execute before startpoint and endpoint is given.
             {
                 var _form = (DisplayResult) form;
                 DrawRoute(_form.vertices, DisplayResult.EndPointIndex, e);
