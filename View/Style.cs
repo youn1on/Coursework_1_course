@@ -18,6 +18,7 @@ namespace Labyrinths_AStar_Dijkstra.View
         public static Point SmallFormLocation = new Point(600, 200);
         public static Point RandomizerFormLocation = FullFormsLocation;
         public static Point BackButtonLocation = new Point(0, 0);
+        public static Color OnClickableColor = Color.LightBlue;
 
         public static Size VisualizedLabyrinthSize = new Size(600, 600);
         public static Size FullFormSize = new Size(752, 780);

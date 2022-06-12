@@ -62,6 +62,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.dijkstraRadioButton.Text = "Dijkstra";
             this.dijkstraRadioButton.UseVisualStyleBackColor = true;
             this.dijkstraRadioButton.Font = Style.SmallFont;
+            this.dijkstraRadioButton.BackColor = Style.OnClickableColor;
             // 
             // manhattanRadioButton
             // 
@@ -73,6 +74,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.manhattanRadioButton.Text = "A* Manhattan";
             this.manhattanRadioButton.UseVisualStyleBackColor = true;
             this.manhattanRadioButton.Font = Style.SmallFont;
+            this.manhattanRadioButton.BackColor = Style.OnClickableColor;
             // 
             // euclideanRadioButton
             // 
@@ -84,6 +86,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.euclideanRadioButton.Text = "A* Euclidean";
             this.euclideanRadioButton.UseVisualStyleBackColor = true;
             this.euclideanRadioButton.Font = Style.SmallFont;
+            this.euclideanRadioButton.BackColor = Style.OnClickableColor;
             // 
             // check
             // 
@@ -95,6 +98,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.check.Click += new(this.Check);
             this.check.UseVisualStyleBackColor = true;
             this.check.Font = Style.ButtonFont;
+            this.check.BackColor = Style.OnClickableColor;
             // 
             // quickSearch
             // 
@@ -106,6 +110,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.quickSearch.Text = "Quick search";
             this.quickSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.quickSearch.UseVisualStyleBackColor = true;
+            this.quickSearch.BackColor = Style.OnClickableColor;
             // 
             // confirm
             // 
@@ -131,16 +136,16 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // coordinatesStartX
             // 
-            this.coordinatesStartX.Location = new System.Drawing.Point(235, 53);
+            this.coordinatesStartX.Location = new System.Drawing.Point(215, 53);
             this.coordinatesStartX.Name = "coordinatesStartX";
-            this.coordinatesStartX.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesStartX.Size = new System.Drawing.Size(50, 22);
             this.coordinatesStartX.TabIndex = 6;
             this.coordinatesStartX.Font = Style.TextFieldFont;
             
             // 
             // startpointLabel
             // 
-            this.startpointLabel.Location = new System.Drawing.Point(100, 50);
+            this.startpointLabel.Location = new System.Drawing.Point(80, 50);
             this.startpointLabel.Name = "startpointLabel";
             this.startpointLabel.Size = new System.Drawing.Size(110, 35);
             this.startpointLabel.TabIndex = 8;
@@ -150,7 +155,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // xLabel
             // 
-            this.xLabel.Location = new System.Drawing.Point(220, 54);
+            this.xLabel.Location = new System.Drawing.Point(200, 54);
             this.xLabel.Name = "xLabel";
             this.xLabel.Size = new System.Drawing.Size(15, 26);
             this.xLabel.TabIndex = 10;
@@ -172,7 +177,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             this.coordinatesStartY.Location = new System.Drawing.Point(280, 53);
             this.coordinatesStartY.Name = "coordinatesStartY";
-            this.coordinatesStartY.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesStartY.Size = new System.Drawing.Size(50, 22);
             this.coordinatesStartY.TabIndex = 12;
             this.coordinatesStartY.Font = Style.TextFieldFont;
             // 
@@ -180,7 +185,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             this.coordinatesEndY.Location = new System.Drawing.Point(590, 53);
             this.coordinatesEndY.Name = "coordinatesEndY";
-            this.coordinatesEndY.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesEndY.Size = new System.Drawing.Size(50, 22);
             this.coordinatesEndY.TabIndex = 17;
             this.coordinatesEndY.Font = Style.TextFieldFont;
             // 
@@ -197,7 +202,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // xEndLabel
             // 
-            this.xEndLabel.Location = new System.Drawing.Point(530, 54);
+            this.xEndLabel.Location = new System.Drawing.Point(510, 54);
             this.xEndLabel.Name = "xEndLabel";
             this.xEndLabel.Size = new System.Drawing.Size(15, 26);
             this.xEndLabel.TabIndex = 15;
@@ -207,7 +212,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // endpointLabel
             // 
-            this.endpointLabel.Location = new System.Drawing.Point(420, 50);
+            this.endpointLabel.Location = new System.Drawing.Point(400, 50);
             this.endpointLabel.Name = "endpointLabel";
             this.endpointLabel.Size = new System.Drawing.Size(100, 35);
             this.endpointLabel.TabIndex = 14;
@@ -217,9 +222,9 @@ namespace Labyrinths_AStar_Dijkstra.View
             // 
             // coordinatesEndX
             // 
-            this.coordinatesEndX.Location = new System.Drawing.Point(545, 53);
+            this.coordinatesEndX.Location = new System.Drawing.Point(525, 53);
             this.coordinatesEndX.Name = "coordinatesEndX";
-            this.coordinatesEndX.Size = new System.Drawing.Size(30, 22);
+            this.coordinatesEndX.Size = new System.Drawing.Size(50, 22);
             this.coordinatesEndX.TabIndex = 13;
             this.coordinatesEndX.Font = Style.TextFieldFont;
             // 
@@ -234,6 +239,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.goBackButton.UseVisualStyleBackColor = true;
             this.goBackButton.Click += new System.EventHandler(this.GoBack);
             this.goBackButton.UseVisualStyleBackColor = true;
+            this.goBackButton.BackColor = Style.OnClickableColor;
             // 
             // DisplayResult
             // 
@@ -261,7 +267,7 @@ namespace Labyrinths_AStar_Dijkstra.View
             this.Controls.Add(this.goBackButton);
             this.labyrinthVisualiser = new LabyrinthVisualiser(this);
             this.Name = "DisplayResultForm";
-            this.Text = "Form1";
+            this.Text = "Labyrinths";
             this.ResumeLayout(false);
             this.PerformLayout();
         }

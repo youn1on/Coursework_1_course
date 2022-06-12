@@ -54,6 +54,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.randomizeButton.Text = "Randomize";
             this.randomizeButton.UseVisualStyleBackColor = true;
             this.randomizeButton.Click += new System.EventHandler(this.Randomize);
+            this.randomizeButton.BackColor = Style.OnClickableColor;
             // 
             // confirmButton
             // 
@@ -95,6 +96,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.deadEndCheckBox.Text = "Create labyrinth with dead ends";
             this.deadEndCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.deadEndCheckBox.UseVisualStyleBackColor = true;
+            this.deadEndCheckBox.BackColor = Style.OnClickableColor;
             // 
             // yDimension
             // 
@@ -125,6 +127,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.goBackButton.UseVisualStyleBackColor = true;
             this.goBackButton.Click += new System.EventHandler(this.GoBack);
             this.goBackButton.UseVisualStyleBackColor = true;
+            this.goBackButton.BackColor = Style.OnClickableColor;
             // 
             // Randomizer
             // 
@@ -141,7 +144,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.goBackButton);
             this.Name = "InitialForm";
-            this.Text = "Form1";
+            this.Text = "Labyrinths";
             this.ResumeLayout(false);
             this.PerformLayout();
         }

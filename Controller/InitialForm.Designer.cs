@@ -79,7 +79,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.confirmButton.TabIndex = 3;
       this.confirmButton.Text = "Confirm✓";
       this.confirmButton.Click += new System.EventHandler(this.Confirm);
-      this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; 
       // 
       // selectButton
       // 
@@ -91,6 +91,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.selectButton.Text = "Select manually";
       this.selectButton.Click += new System.EventHandler(this.Select);
       this.selectButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.selectButton.BackColor = Style.OnClickableColor;
       // 
       // randomizerButton
       // 
@@ -102,6 +103,7 @@ namespace Labyrinths_AStar_Dijkstra.Controller
       this.randomizerButton.Text = "Randomize";
       this.randomizerButton.Click += new System.EventHandler(this.Randomize);
       this.randomizerButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.randomizerButton.BackColor = Style.OnClickableColor;
       // 
       // InitialForm
       // 

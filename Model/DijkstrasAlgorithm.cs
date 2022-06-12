@@ -36,7 +36,7 @@ namespace Labyrinths_AStar_Dijkstra.Model
                 int currentVertice = queue.Pop();
                 if (currentVertice == endPointIndex) // Endpoint is reached.
                 {
-                    MessageBox.Show($"{Visualiser.passed.Count}");
+                    MessageBox.Show($"Amount of vertices considered: {Visualiser.passed.Count+1} \nPath length: {Vertices[endPointIndex].MinDistance}");
                     return true;
                 }
                 for (int i = 0; i<Vertices.Length; i++)
